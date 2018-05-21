@@ -1,24 +1,17 @@
 // HTML DOM VARIABLES
-var cover = document.getElementById("cover");
 var body = document.getElementsByTagName("body");
 var gameBoard = document.getElementById("gameBoard");
+var midSection = document.getElementById("midSection");
 var shop = document.getElementById("shop");
 var stats = document.getElementById("stats");
 var player = document.getElementById("player");
 var computerSim = document.getElementById("computerSim");
 var playerVotes = document.getElementById("votes");
-var compVotes = document.getElementById("compVotes");
 var notice = document.getElementById("messageArea");
-var specs = document.getElementById("specs");
-var opener = document.getElementById("opener");
 var messageArea = document.getElementById("messageArea");
 var shopNav = document.getElementsByClassName("shopNav");
 var shopPage = document.getElementsByClassName("shopPage");
 
-var alliansen = document.getElementById("alliansen");
-var rodgron = document.getElementById("rodgron");
-
-var team = [];
 var alliansPartier = ["l", "kd", "c", "m"];
 var rgPartier = ["vp", "mp", "mp", "s"];
 
@@ -32,132 +25,151 @@ lockedClick.play();
 var purchase = new Audio('purchase.wav');
 purchase.play();*/
 
-//här är jaaaaaag
-
-//changing color theme based on selection
-function allians() {
-	cover.setAttribute("style", "display: none;");
-	body[0].setAttribute("style", "background-color: #EC922B;");
-	gameBoard.setAttribute("style", "background-color: #2B85EC;");
-	stats.setAttribute("style", "background-color: #2B85EC;");
-	player.setAttribute("style", "background-color: #2B85EC;");
-	computerSim.setAttribute("style", "background-color: #d22d2d;");
-	specs.setAttribute("style", "background-color: #2b85ec; color: #EC922B;");
-	opener.setAttribute("style", "background-color: #2b85ec; color: #EC922B;");
-	shopNav[0].setAttribute("style", "background-color: #2B85EC; color: #EC922B;");
-	for (var i = 1; i < shopNav.length; i++) {
-		shopNav[i].setAttribute("style", "color: #EC922B;");
-	}
-	for (var j = 0; j < shopPage.length; j++) {
-		shopPage[j].setAttribute("style", "background-color: #2B85EC;");
-	}
+//Vilket lag?
+var Alliansen = false;
+var RödGröna = false;
+//välj lag från landingpage
+function valjAl() {
+	document.getElementById("cover").style.display = "none";
 	Alliansen = true;
 	char = teamBlue;
-	endGame.timeStart();
+	farger();
+	gameLoad();
 }
-function rodGron() {
-	cover.setAttribute("style", "display: none;");
-	body[0].setAttribute("style", "background-color: #2dd2d2;");
-	gameBoard.setAttribute("style", "background-color: #d22d2d;");
-	stats.setAttribute("style", "background-color: #d22d2d;");
-	player.setAttribute("style", "background-color: #d22d2d;");
-	computerSim.setAttribute("style", "background-color: #2B85EC;");
-	specs.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2;");
-	opener.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2;");
-	shopNav[0].setAttribute("style", "background-color: #d22d2d; color: #2dd2d2;");
-	for (var i = 1; i < shopNav.length; i++) {
-		shopNav[i].setAttribute("style", "color: #2dd2d2;");
-	}
-	for (var j = 0; j < shopPage.length; j++) {
-		shopPage[j].setAttribute("style", "background-color: #d22d2d;");
-	}
+function valjRg() {
+	document.getElementById("cover").style.display = "none";
 	RödGröna = true;
-	char = teamRed
+	char = teamRed;
+	farger();
+	gameLoad();
 }
-alliansen.addEventListener("click", allians);
-rodgron.addEventListener("click", rodGron);
-
-//top; progressbar
-var playerClicks = 0;
-var computer = 0;
-
-var opponent = setInterval(opponent, 500);
-
-//player playing by clicking cookie
-/*function clicking() {
-	var x = Math.round(Math.random() * 2);
-	playerVotes.innerHTML = playerClicks;
-	if((playerClicks + computer) < 60) {
-		if (x == 0) {
-			-- playerClicks;
-			player.style.width = (playerClicks * 10) + "px";
-			return playerClicks;
-		} else {
-			++ playerClicks;
-			player.style.width = (playerClicks * 10) + "px";
-			return playerClicks;
+document.getElementById("chooseA").addEventListener("click", valjAl);
+document.getElementById("chooseRG").addEventListener("click", valjRg);
+//funktion som sätter färg bereoende på lag
+function farger() {
+	if(Alliansen == true) {
+		body[0].style.backgroundColor = "#EC922B";
+		player.style.backgroundColor = "#2B85EC";
+		computerSim.style.backgroundColor = "#d22d2d";
+		gameBoard.style.backgroundColor = "#2B85EC";
+		gameBoard.style.borderRight = "5px solid #EC922B";
+		midSection.style.backgroundColor = "#2B85EC";
+		midSection.style.borderRight = "5px solid #EC922B";
+		specs.style.backgroundColor = "#2B85EC";
+		specs.style.color = "#EC922B";
+		opener.style.backgroundColor = "#EC922B";
+		opener.style.color = "#2B85EC";
+		closer.style.backgroundColor = "#EC922B";
+		closer.style.color = "#2B85EC";
+		shopNav[0].style.backgroundColor = "#2B85EC";
+		shopNav[0].style.color = "#EC922B";
+		for (var i = 1; i < shopNav.length; i++) {
+			shopNav[i].style.color = "#EC922B";
+		}
+		for (var j = 0; j < shopPage.length; j++) {
+			shopPage[j].style.backgroundColor = "#2B85EC";
 		}
 	} else {
-		clearInterval(opponent);
-		if (computer < playerClicks) {
-				printMessage("you win");
-		} else {
-				printMessage("you lose");
+		body[0].style.backgroundColor = "#2dd2d2";
+		player.style.backgroundColor = "#d22d2d";
+		computerSim.style.backgroundColor = "#2B85EC";
+		gameBoard.style.backgroundColor = "#d22d2d";
+		gameBoard.style.borderRight = "5px solid #2dd2d2";
+		midSection.style.backgroundColor = "#d22d2d";
+		midSection.style.borderRight = "5px solid #2dd2d2";
+		specs.style.backgroundColor = "#2dd2d2";
+		specs.style.color = "#d22d2d";
+		opener.style.backgroundColor = "#2dd2d2";
+		opener.style.color = "#d22d2d";
+		closer.style.backgroundColor = "#2dd2d2";
+		closer.style.color = "#d22d2d";
+		shopNav[0].style.backgroundColor = "#d22d2d";
+		shopNav[0].style.color = "#2dd2d2";
+		for (var k = 1; k < shopNav.length; k++) {
+			shopNav[k].style.color = "#2dd2d2";
+		}
+		for (var l = 0; l < shopPage.length; l++) {
+			shopPage[l].style.backgroundColor = "#d22d2d";
 		}
 	}
 }
-//computer playing / click simulation
-function opponent() {
-	var x = Math.round(Math.random() * 2);
-	compVotes.innerHTML = computer;
-	while((computer + playerClicks) < 60) {
-		if (x == 0) {
-			-- computer;
-			computerSim.style.width = (computer * 10) + "px";
-			return computer;
+//top-progressbar: illustrerar hur många röster spelaren & boten har
+function showProgress() {
+	//spelarens röster
+	document.getElementById("player").style.width = votes * (50/3500000) + "%";
+	document.getElementById("playervotes").innerText = votes.toFixed(0);
+	//visa röster PÅ progressbar tills det finns plats att visa I bar
+		if (votes.toFixed(0).toString().length < 6) {
+			document.getElementById("playervotes").setAttribute("style", "position: fixed; top: 2.5px; left: 5px;");
+				if (Alliansen == true) {
+					document.getElementById("playervotes").setAttribute("style", "color: #2B85EC;");
+				} else {
+					document.getElementById("playervotes").setAttribute("style", "color: #d22d2d;");
+				}
 		} else {
-			++ computer;
-			computerSim.style.width = (computer * 10) + "px";
-			return computer;
+			document.getElementById("playervotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-end;");
 		}
-	}
-	if (playerClicks + computer == 60) {
-		return false;
-	}
-}*/
-//left - specs
+	//boten annas röster
+	document.getElementById("computerSim").style.width = botVotes * (50/3500000) + "%";
+	document.getElementById("botvotes").innerText = botVotes.toFixed(0);
+	//visa röster PÅ progressbar tills det finns plats att visa I bar
+		if (botVotes.toFixed(0).toString().length < 6) {
+			document.getElementById("botvotes").setAttribute("style", "position: fixed; top: 2.5px; right: 50px;");
+				if (Alliansen == true) {
+					document.getElementById("botvotes").setAttribute("style", "color: #d22d2d;");
+				} else {
+					document.getElementById("botvotes").setAttribute("style", "color: #2B85EC;");
+				}
+		} else {
+			document.getElementById("botvotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-start;");
+		}
+}
+//midSection - specs
+var opener = document.getElementById("opener");
+var closer = document.getElementById("closer");
+var specs = document.getElementById("specs");
 function viewSpecs() {
-  //open specs on click
-  specs.setAttribute("style", "display: inline;");
-  opener.setAttribute("style", "left: 160px;");
-	if(alliansen === true) {
-		specs.setAttribute("style", "background-color: #2b85ec; color: #EC922B; display: inline;");
-		opener.setAttribute("style", "background-color: #2b85ec; color: #EC922B; left: 160px;");
+	opener.setAttribute("style", "display: none");
+	closer.setAttribute("style", "display: inline;");
+	specs.setAttribute("style", "display: inline");
+	if (Alliansen == true) {
+		specs.style.backgroundColor = "#EC922B";
+		specs.style.color = "#2B85EC";
+		opener.style.backgroundColor = "#EC922B";
+		opener.style.color = "#2B85EC";
+		closer.style.backgroundColor = "#EC922B";
+		closer.style.color = "#2B85EC";
 	} else {
-		specs.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; display: inline;");
-		opener.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; left: 160px;");
+		specs.style.backgroundColor = "#2dd2d2";
+		specs.style.color = "#d22d2d";
+		opener.style.backgroundColor = "#2dd2d2";
+		opener.style.color = "#d22d2d";
+		closer.style.backgroundColor = "#2dd2d2";
+		closer.style.color = "#d22d2d";
 	}
-  //change look of opener when open by changing id
-  opener.id = "closer";
 }
-//close specs
 function closeSpecs() {
-	if(team.includes("alliansen")) {
-		specs.setAttribute("style", "background-color: #2b85ec; color: #EC922B; display: none;");
-		opener.setAttribute("style", "background-color: #2b85ec; color: #EC922B; left: 0px;");
-		opener.id = "opener";
+	opener.setAttribute("style", "display: inline");
+	closer.setAttribute("style", "display: none;");
+	specs.setAttribute("style", "display: none");
+	if (Alliansen == true) {
+		specs.style.backgroundColor = "#EC922B";
+		specs.style.color = "#2B85EC";
+		opener.style.backgroundColor = "#EC922B";
+		opener.style.color = "#2B85EC";
+		closer.style.backgroundColor = "#EC922B";
+		closer.style.color = "#2B85EC";
 	} else {
-		specs.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; display: none;");
-		opener.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; left: 0px;");
-		opener.id = "opener";
+		specs.style.backgroundColor = "#2dd2d2";
+		specs.style.color = "#d22d2d";
+		opener.style.backgroundColor = "#2dd2d2";
+		opener.style.color = "#d22d2d";
+		closer.style.backgroundColor = "#2dd2d2";
+		closer.style.color = "#d22d2d";
 	}
 }
-opener.addEventListener("mouseover", viewSpecs);
-specs.addEventListener("mouseover", viewSpecs);
-opener.addEventListener("mouseout", closeSpecs);
-specs.addEventListener("mouseout", closeSpecs);
-
-
+opener.addEventListener("click", viewSpecs);
+closer.addEventListener("click", closeSpecs);
 //sidebar; shop - navigating through tabs
 function visaSida(sida) {
 	var currentPage = document.getElementsByClassName(sida);
@@ -169,49 +181,44 @@ function visaSida(sida) {
   uppgr.style.display = "none";
   legender.style.display = "none";
 
-	if (team.includes("alliansen")) {
+	if (Alliansen == true) {
 		//change color of inactive buttons
 		for (var i = 0; i < shopNav.length; i++) {
 			shopNav[i].style.backgroundColor = "#fff";
+			shopNav[i].style.color = "#2B85EC";
 		}
 		currentPage[0].style.backgroundColor = "#2b85ec";
+		currentPage[0].style.color = "#EC922B";
 	} else {
 		for (var j = 0; j < shopNav.length; j++) {
 			shopNav[j].style.backgroundColor = "#fff";
+			shopNav[j].style.color = "#2dd2d2";
 		}
 		currentPage[0].style.backgroundColor = "#d22d2d";
 	}
   currentPage[1].style.display = "inline";
 }
-
 //messages
-function printMessage(message) {
-	var messageArray = [];
-  messageArea.innerHTML = "";
-  messageArray.push(message);
+function newMessage(message) {
+	messageArea.innerHTML = ""
+	messageArea.style.display = "inline";
+	if (Alliansen == true) {
+		messageArea.style.color = "#2B85EC";
+	} else {
+		messageArea.style.color = "#d22d2d";
+	}
+	var msg = document.createElement("p");
+	msg.className = "message";
+	msg.innerText = message;
+	messageArea.appendChild(msg);
 
-  for (var i = 0; i < messageArray.length; i++) {
-    var msg = document.createElement("p");
-    msg.className = "message";
-    msg.innerHTML += messageArray[i];
-    messageArea.appendChild(msg);
-  }
-  var fix = messageArea.lastChild;
-  fix.setAttribute("style", "position: absolute; bottom: 10px; left: 10px;");
-
-  if(messageArray.length > 1) {
-  var last2 = fix.previousSibling;
-  last2.setAttribute("style", "position: absolute; bottom: 30px; left: 10px; color: rgba(255, 255, 255, 0.7)");
-    if(messageArray.length > 2) {
-      var last3 = last2.previousSibling;
-      last3.setAttribute("style", "position: absolute; bottom: 50px; left: 10px; color: rgba(255, 255, 255, 0.3)");
-    }
-  }
-  if(messageArray.length >= 3) {
-    var length = messageArray.length - 2;
-    messageArray.splice(0, length);
-  }
-	return messageArray;
+	var closeMessage = document.createElement("SPAN");
+	closeMessage.classList.add("closeMessage");
+	messageArea.appendChild(closeMessage);
+		function close() {
+			messageArea.style.display = "none";
+		}
+	closeMessage.addEventListener("click", close);
 }
 
 var rosta = document.getElementById('rosta');
@@ -237,11 +244,7 @@ var votes = 0;
 var coinAmount = 0;
 var coinValue = 5;
 var recentCoinSpawn = false;
-var tokenAmount = 0;
 
-//Vilket lag?
-var Alliansen = false;
-var RödGröna = false;
 
 //Röster/s variabler
 var votesPerSec = 0;
@@ -343,10 +346,12 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 
 function refresh() //Värden, element och dylit som behöver frekvent uppdatering
 {
-  playerVotes.innerHTML = "Röster: " + votes.toFixed(0);
-	counter.innerHTML = "Coins: " + coinAmount.toFixed(0);
+  playerVotes.innerHTML = votes.toFixed(0) + " R";
+	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
   vps.vpsCalc();
 	click.clickCalc();
+	refreshSpecs();
+	showProgress();
 }
 
 function claimVote() //Klicka på kakan för att få poäng
@@ -359,8 +364,6 @@ function claimVote() //Klicka på kakan för att få poäng
 		reasonableCoinSpawn();
 	}
 }
-
-
 
 //Game Loop
 function gameloop()
@@ -378,10 +381,7 @@ function gameloop()
 }
 setInterval(gameloop, 33);
 
-
-
 //unlock characters
-
 function unlockCharacter(i) { //Låser upp karaktärer i spelet
 	//karaktärsurval beroende på parti
   if (Alliansen === true) {
@@ -415,52 +415,36 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
   var createCost = document.createElement("span");
 		createCost.setAttribute("id", costId); //Lägger till ID som tillåter framtida ändring
 	  createCost.className = "pricetag"; //class för pricetag utseende
-		createCost.innerText = "kostnad: " + char.cost;
+		createCost.innerHTML = char.cost + "R";
 	//skapa h2 element som visar hur många av en karaktär spelaren har
   var createQuantity = document.createElement("h2");
 		createQuantity.setAttribute("id", quantityId);
 		createQuantity.className = "characterQuantity";
 		createQuantity.innerText = char.quantity + " x ";
 		createQuantity.setAttribute("style", "display: inline;");
-
 	//skapa element som visas när en hovrar över karaktärsdiven
 	var info = document.createElement("div");
 		info.className = "info";
 		info.innerText = char.info;
 		createDiv.appendChild(info);
-		//skapa knapp för att köpa karaktär
-			var buyBtn = document.createElement("button");
-			buyBtn.innerText = "KÖP";
-			buyBtn.classList.add("buy");
-			info.appendChild(buyBtn);
-				//färg baserat på lag
-				if(Alliansen === true) {
-					buyBtn.setAttribute("style", "background-color: #2B85EC;");
-				} else {
-					buyBtn.setAttribute("style", "background-color: #D22D2D;");
-				}
-/*
-
-	if(alliansPartier.includes(party)) {
-		charDiv.setAttribute("style", "color: #2B85EC; border: #EC922B 3px dashed;");
-		buyBtn.setAttribute("style", "background-color: #2B85EC;");
+	var createRPS = document.createElement("p");
+	  var RPSText = document.createTextNode("Varje " + char.name + " ger " + char.vps + " röster per sekund. Totalt " + char.accumvps + " röster per sekund.");
+		createRPS.appendChild(RPSText);
+	  createRPS.className = "characterTotalVps";
+	  createRPS.setAttribute("id", vpsId);
+		info.appendChild(createRPS);
+	//sätt färg runt karaktärsdiv beroende på lag
+	if (Alliansen == true) {
+		createDiv.setAttribute("style", "border: #EC922B 3px dashed;");
+		createCost.setAttribute("style", "text-shadow: -2px 0 #2B85EC, 0 2px #2B85EC, 2px 0 #2B85EC, 0 -2px #2B85EC");
 	} else {
-		charDiv.setAttribute("style", "color: #d22d2d; border: #2dd2d2 3px dashed;");
-		buyBtn.setAttribute("style", "background-color: #D22D2D;");
-	}*/
-
-
-  //var createRPS = document.createElement("p");
-  //var RPSText = document.createTextNode("Röster/s: " + char.accumvps);
-  //createRPS.className = "characterTotalVps";
-  //createRPS.setAttribute("id", vpsId);
-
+		createDiv.setAttribute("style", "border: #2dd2d2 3px dashed;");
+		createCost.setAttribute("style", "text-shadow: -2px 0 #d22d2d, 0 2px #d22d2d, 2px 0 #d22d2d, 0 -2px #d22d2d");
+	}
 	//appenda alla nya element till diven där karaktären visas
   createDiv.appendChild(createName);
   createDiv.appendChild(createCost);
   createName.appendChild(NameText);
-  //createRPS.appendChild(RPSText);
-  //createDiv.appendChild(createRPS);
 	//appenda karaktärsdiven till boxen där karaktärerna visas (i shop - sida "politiker")
   document.getElementById("politiker").appendChild(createDiv);
 }
@@ -493,10 +477,10 @@ function lookForNewCharacter(i) //Skannar efter möjlighet att låsa upp nya sak
     document.getElementById("frame " + char.name).style.opacity = "0.6";
 		//ta bort class så att hover inte funkar när karaktären inte kan köpas
 		document.getElementById("frame " + char.name).classList.remove("active");
-		if(alliansen === true) {
+		if(Alliansen === true) {
 			document.getElementById("frame " + char.name).style.border = "#EC922B 3px dashed";
 		} else {
-			document.getElementById("frame " + char.name).style.border = "#d222d2 3px dashed";
+			document.getElementById("frame " + char.name).style.border = "#2dd2d2 3px dashed";
 		}
   }
   //Kod för att ta bort fejden när en har råd
@@ -548,43 +532,40 @@ var positions = [0, 50, 100, 150, 200, 300, 400, 450, 500, 550];	//All possible 
 var container = document.getElementById("landingArea");
 var counter = document.getElementById("counter");
 var coinID = 0;
-var coinCounter = 0;
+
 
 function spawnCoin() {
-	var isToken = false;
+
 	coin = document.createElement("div");	//Create coin, give it class and put it in container
 	coin.className = "coin";
 	coin.setAttribute("id", coinID);
 	container.appendChild(coin);
 	coinID++;
+	coinCollected = false;
 
+	//for (i = 0; i < coins.length; i++)
+
+	//var coinEvent = document.querySelector("div.coin");	//Eventlistener for the coin
 	var whatCoin = coin.id
 	var coinDOM = document.getElementById(whatCoin);
 	coinDOM.addEventListener("mouseover", function() {
-		var trash = container.removeChild(coinDOM);	//Remove coin and increase counter
-		++statistics.coinsCollected;
+	var trash = container.removeChild(coinDOM);	//Remove coin and increase counter
+	//var trash = container.removeChild(document.getElementById(coinID));
 		randomMoney(coinValue);
-		clearTimeout(preventRemove);
+		coinCollected = true;
 	} );
-
-	var preventRemove = setTimeout(removeCoin, 15000, coinDOM);
-	generatePosition(isToken);
+	generatePosition();
 }
+var coinCounter = 0;
 
-
-function generatePosition(isToken) {
+function generatePosition() {
 	var arrX = Math.floor(Math.random()*positions.length);	//Pick a random coordinate from the array
 	var arrY = Math.floor(Math.random()*positions.length);
 
 	var xPos = positions[arrX];	//These positions are where the coin will end up
 	var yPos = positions[arrY];
 
-	if (isToken == true) {
-		showLegendToken(xPos, yPos);
-	} else {
-		moveCoin(xPos, yPos);
-	}
-
+	moveCoin(xPos, yPos);
 }
 
 function moveCoin(xPos, yPos) {
@@ -596,7 +577,9 @@ function moveCoin(xPos, yPos) {
 
 	    if (x == xPos && y == yPos) {	//When both x & y position is met, stop the animation
 	      	clearInterval(moveAnimation);
-
+	      	if (coinCollected == false) {
+	      		//var blinkAnimation = setTimeout(blink, 2000);	//After some time the blink animation will fire
+	      	}
 	    } else if (xPos == 300 && yPos == 300) {	//If x & y is starting the starting coordinates, generate new ones
 	    	generatePosition();
 	    } else {
@@ -652,6 +635,10 @@ function moveCoin(xPos, yPos) {
 		    		y = y + 3;
 		    	}*/
 			}
+			//document.getElementById(whatCoin).style.top = y + 'px';
+			//document.getElementById(whatCoin).style.left = x + 'px';
+    	//coin.style.top = y + 'px';
+    	//coin.style.left = x + 'px';
 
 			var whatCoin = coin.id;
 			var coinDOM = document.getElementById(whatCoin);
@@ -661,9 +648,16 @@ function moveCoin(xPos, yPos) {
   	}
 }
 
-function removeCoin(coinDOM) {
-		var trash = container.removeChild(coinDOM);
+function blink() {
+	//coin.className = "coin2";
+	var deleteCoin = setTimeout(removeCoin, 10000);
 }
+
+function removeCoin() {
+		if (coinCollected == false) {
+			var trash = container.removeChild(coinDOM);
+		}
+	}
 
 function reasonableCoinSpawn()
 {
@@ -683,72 +677,17 @@ function randomMoney(coinValue) //RNG Logic to coins.
 {
 		var rollOne = Math.floor(Math.random()*11);
 		var rollTwo = Math.floor(Math.random()*11);
-	var coinAmountTemp = 0;
 
 		if (rollOne >= 7)
 		{
-			coinAmountTemp = (Math.random()*7+3) * coinValue;
-			coinAmount += coinAmountTemp;
+			coinAmount += (Math.random()*7+3) * coinValue;
 		}
 		else
 		{
-			coinAmountTemp = (Math.random()*2+1) * coinValue;
-			coinAmount += coinAmountTemp;
+			coinAmount += (Math.random()*2+1) * coinValue;
 		}
-		statistics.totalMoney += coinAmountTemp;
 	}
 
-var randomSpawn = Math.floor(Math.random() * 300000) + 180000;
-var tokenTimer = setInterval(spawnLegendToken, randomSpawn);
-
-function spawnLegendToken() {
-	var isToken = true;
-	token = document.createElement("div");
-	token.setAttribute("id", "legendToken");
-	container.appendChild(token);
-
-	token.addEventListener("mouseover", function() {
-		var trash = container.removeChild(token);
-		++tokenAmount;
-		++statistics.totalLegendTokens;
-		clearTimeout(preventDelete);
-	});
-
-	randomSpawn = Math.floor(Math.random() * 300000) + 180000;
-	preventDelete = setTimeout(blinkToken, 30000);
-	generatePosition(isToken);
-}
-
-function showLegendToken(xPos, yPos) {
-	token.style.top = yPos + 'px';
-	token.style.left = xPos + 'px';
-}
-
-function blinkToken() {
-	token.setAttribute("id", "legendToken2");
-	preventDelete = setTimeout(removeToken, 10000);
-}
-
-function removeToken() {
-	var trash = container.removeChild(token);
-}
-
-/*//Stats//*/
-
- statistics = {
-	 totalVotes: 0, //done
-	 totalMoney: 0, //done
-	 totalClicks: 0, //done
-	 totalLegendTokens: 0, //done
-	 votesPerClick: 0, //done
-	 votesPerSecond: 0, //done
-	 timePlayed: 0, //done
-	 upgradesOwned: 0, //done
-	 charactersOwned: 0, //done
-	 coinsCollected: 0, //done
-	 moneyValue: 0, //done
-	 votesPerSecondMultiplier: 0 //done
-};
 
 /*/Objekt
 ----------------
@@ -777,9 +716,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"Skillnaden mellan att kapa och skapa vårdköer är ett (S)."',
@@ -806,9 +745,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"Rysk gas har två nackdelar. Den ena är att den är gas, och den andra är att den är rysk."',
@@ -835,9 +774,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Det finns tre saker som jag tycker riktigt illa om: 1) socialism 2) arrogans 3) män som inte förstår ett nej."',
@@ -864,9 +803,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Det politiska samtalsklimatet plågas av gnällighet, ängslighet och stingslighet. Nu behövs några vuxna i rummet."',
@@ -897,9 +836,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + "R ";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"När jag hör Jimmie Åkesson prata om miljöfrågan, börjar jag tänka på ett sånt här flaskskepp, hur kom du in hit egentligen?"',
@@ -926,9 +865,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"Det här är en kolbit."',
@@ -955,9 +894,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Det finns inga jobb på en död planet."',
@@ -984,9 +923,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Men, eh... det är bara käbbel!"',
@@ -996,62 +935,6 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 var legendaryHero = //Array med SECRET HEROES OMFG (som objekt)
 [
 
-];
-
-var quest = [
-	Jimmie = {
-		name: "Jimmie Åkesson",
-		party: "SD",
-		quantity: 0,
-		cost: 0,
-		vps: 0,
-		accumvps: 0,
-		image: "url('./img-rodgron/stefan.png')",
-		load: function() {
-			if (this.quantity == 0) {
-
-			} else {
-				if (votes >= this.cost) {
-					votes-=this.cost;
-					this.quantity++;
-					++statistics.charactersOwned;
-					vpsValue += this.vps;
-					this.cost = Math.ceil(this.cost*1.25);
-					this.accumvps += this.vps; //Accumulated votes per sec for this char
-					document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
-					document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-					document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
-				}
-			}
-		},
-		info: '"Tjena bloggen, Jimmie här!"',
-		quest: function() {
-			var questBox = document.createElement("div");
-			questBox.setAttribute("id", "questBox");
-			var questText = document.createElement("p");
-			var questTextNode = document.createTextNode("Tjena du, vill du sammarbeta?");
-			var yesButton = document.createElement("button");
-			var buttonNode = document.createTextNode("Yes");
-			var noButton = document.createElement("button");
-			var buttonNode2 = document.createTextNode("No");
-
-			questText.appendChild(questTextNode);
-			questBox.appendChild(questText);
-			yesButton.appendChild(buttonNode);
-
-			noButton.appendChild(buttonNode2);
-			questBox.appendChild(yesButton);
-			questBox.appendChild(noButton);
-			gameBoard.appendChild(questBox);
-			yesButton.addEventListener("mousedown", this.questStart());
-		},
-		questStart: function() {
-			alert();
-			gameBoard.removeChild(questBox);
-			this.load();
-
-		}
-	}
 ];
 
 var upgrades = //Array med spelets alla uppgraderingar (som objekt)
@@ -1335,55 +1218,6 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	},
 ];
 
-
-/*//show characters
-var jonasInfo = '<p>"När jag hör Jimmie Åkesson prata om miljöfrågan, börjar jag tänka på ett sånt här flaskskepp, hur kom du in hit egentligen?"</p>';
-
-var price = 200;
-var count = 0;
-
-function showChar(name, party, imgclass, infotext) {
-  var charDiv = document.createElement("div");
-  charDiv.classList.add("char");
-  politiker.appendChild(charDiv);
-
-  var charName = document.createElement("span");
-  charName.classList.add("name");
-  charName.innerHTML = "<h2>" + count + " " + name + " ("+ party + ")" + "</h2>";
-  charDiv.appendChild(charName);
-
-  var charimage = document.createElement("span");
-  charimage.classList.add("image", imgclass);
-  charDiv.appendChild(charimage);
-
-  var pricetag = document.createElement("span");
-  pricetag.classList.add("pricetag");
-  pricetag.innerText = price + " R";
-  charDiv.appendChild(pricetag);
-
-
-
-	var nextUpdate = document.createElement("span");
-	nextUpdate.classList.add("nextUpdate");
-	nextUpdate.innerHTML = "<h3>RPS: 20<br>RPS: 40</h3>";
-	info.appendChild(nextUpdate);
-
-	var buyBtn = document.createElement("button");
-	buyBtn.innerText = "KÖP";
-	buyBtn.classList.add("buy");
-	info.appendChild(buyBtn);
-
-	if(alliansPartier.includes(party)) {
-		charDiv.setAttribute("style", "color: #2B85EC; border: #EC922B 3px dashed;");
-		buyBtn.setAttribute("style", "background-color: #2B85EC;");
-	} else {
-		charDiv.setAttribute("style", "color: #d22d2d; border: #2dd2d2 3px dashed;");
-		buyBtn.setAttribute("style", "background-color: #D22D2D;");
-	}
-}
-
-*/
-
 //BOT SECTION
 var botVotes = 0;
 var flatValue = 2;
@@ -1394,7 +1228,6 @@ var botVps = botVpsMultiplier*(flatValue + incrValue) * adaptLogic;
 
 var botVotesHTML = document.getElementById("botvotes");
 
-
 function botIncrement()
 {
 	botVps = botVpsMultiplier*(flatValue + incrValue) * adaptLogic;
@@ -1402,9 +1235,6 @@ function botIncrement()
 	botIncrValue();
 	adaptLogics();
 	botUpgrades();
-	botVotesHTML.innerHTML = botVotes;
-
-
 }
 setInterval(botIncrement, 1000);
 
@@ -1436,10 +1266,7 @@ function botUpgrades()
 		botVpsMultiplier += 0.75;
 	}
 }
-
-
 /*/TALENT TREE/*/
-
 var talentTree =
 {
 	budget: 0,
@@ -1463,7 +1290,7 @@ var talentTree =
 		{
 			coinAmount -= this.costBudget;
 			this.budget++;
-			this.costBudget *= 1.05
+			this.costBudget *= 1.05;
 			//effekt
 			coinValue++;
 			coinRngSetting -= 0.25;
@@ -1475,7 +1302,7 @@ var talentTree =
 		{
 			coinAmount -= this.costMarketing;
 			this.marketing++;
-			this.costBudget *= 1.05;
+			this.costMarketing *= 1.05;
 			//effekt
 			vps.vpsMultiplier *= 1.025;
 		}
@@ -1485,84 +1312,30 @@ var talentTree =
 		if (coinAmount >= this.costRetorik)
 		{
 			coinAmount -= this.costRetorik;
+			this.retorik++;
 			this.costRetorik *= 1.05;
 			//effekt
 			click.talentClickMultiplier *= 1.15;
 		}
 	}
+};
+//function som håller specsen uppdaterade - placeras i gameloop för att uppdateras kontinuerligt
+function refreshSpecs() {
+	amtBudget.innerText = talentTree.budget;
+	amtMarketing.innerText = talentTree.marketing;
+	amtRetorik.innerText = talentTree.retorik;
+	buyBudget.innerText = talentTree.costBudget.toFixed(2) + "SEK";
+	buyMarketing.innerText = talentTree.costMarketing.toFixed(2) + "SEK";
+	buyRetorik.innerText = talentTree.costRetorik.toFixed(2) + "SEK";
 }
-
-/*/END GAME OBJECT/*/
-var endGame =
-{
-	majoritet: 3500000,
-	speltid: 0,
-	spelarnamn: "",
-
-	database: firebase.database().ref("Highscores"),
-
-	timeStart: function() //Startar klockan
-	{
-		startTime = new Date();
-		return startTime;
-	},
-	timeEnd: function() //Stannar klockan och kalkylerar speltid
-	{
-		var endTime = new Date() - startTime;
-		this.speltid = (endTime/60000).toFixed(2);
-		return endTime;
-	},
-	check: function() //Kollar efter vinst
-	{
-		if (votes === 0/*/this.majoritet+1/*/)
-		{
-			this.timeEnd();
-			this.winframe();
-		}
-	},
-	winframe: function() //Skapar gratulationsruta + name/score submission
-	{
-		var windiv = document.createElement("div");
-		windiv.setAttribute("id", "windiv");
-		var p1 = document.createElement("p");
-		var p2 = document.createElement("p");
-		var p3 = document.createElement("p");
-		p1.setAttribute("id", "wintitle");
-		p1.innerText = "Du har vunnit!";
-		p2.setAttribute("id", "winsubtitle");
-		p2.innerText = "Du nådde majoritet efter:";
-		p3.setAttribute("id", "wintime");
-		p3.innerText = this.speltid + " minuter";
-		windiv.appendChild(p1);
-		windiv.appendChild(p2);
-		windiv.appendChild(p3);
-		var form = document.createElement("form");
-	  form.setAttribute("id", "winform");
-		var input1 = document.createElement("input");
-		var input2 = document.createElement("input");
-		form.appendChild(input1);
-		form.appendChild(input2);
-		windiv.appendChild(form);
-		document.getElementsByTagName("body")[0].appendChild(windiv);
-		input1.setAttribute("type", "text");
-		input1.setAttribute("id", "highscorename");
-		input2.setAttribute("type", "button");
-		input2.setAttribute("id", "highscorebutton");
-	  input2.setAttribute("value", "Submit");
-	  var submitbutton = document.getElementById("highscorebutton");
-	  submitbutton.onclick = function(){endGame.namesubmit();}
-	},
-	namesubmit: function() //funktion som binds till knappen i winframe()
-	{
-		var inputName = document.getElementById("highscorename").value;
-	  this.spelarnamn = inputName;
-		var obj =
-		{
-			Score: this.speltid,
-			Name: this.spelarnamn,
-		}
-		this.database.push(obj);
-		window.location.href = "hs.html";
-
-	},
-}
+//spans för att uppdatera mängden av specs
+var amtBudget = document.getElementById("amtBudget");
+var amtMarketing = document.getElementById("amtMarketing");
+var amtRetorik = document.getElementById("amtRetorik");
+//referenser till köpknapp för specs
+var buyBudget = document.getElementById("buyBudget");
+buyBudget.addEventListener("click", talentTree.budgetSpec());
+var buyMarketing = document.getElementById("buyMarketing");
+buyMarketing.addEventListener("click", talentTree.marketingSpec());
+var buyRetorik = document.getElementById("buyRetorik");
+buyRetorik.addEventListener("click", talentTree.retorikSpec());

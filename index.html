@@ -15,85 +15,56 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDYtpzMFjudAvl6VNW9arDgk1GaL_ZWItA",
-        authDomain: "valkakan-681ba.firebaseapp.com",
-        databaseURL: "https://valkakan-681ba.firebaseio.com",
-        projectId: "valkakan-681ba",
-        storageBucket: "",
-        messagingSenderId: "1048719211772"
-      };
-      firebase.initializeApp(config);
-    </script>
-
 </head>
 
-<body onload="gameLoad()">
-
+<body>
 <div id="cover">
-
-    <span id="alliansen" class="name">
-        <span class="bubble l movt1"></span>
-        <span class="bubble kd movt1r"></span>
-        <span class="bubble c movt2"></span>
-        <span class="bubble m movt2r"></span>
-        <span class="bubble l movt3"></span>
-        <span class="bubble kd movt3r"></span>
-        <span class="bubble c movt4"></span>
-        <span class="bubble m movt4r"></span>
-      <span class="written">ALLIANSEN.</span>
-    </span>
-    <span id="rodgron" class="name">
-        <span class="bubble vp movt1"></span>
-        <span class="bubble mp movt1r"></span>
-        <span class="bubble mp movt2"></span>
-        <span class="bubble s movt2r"></span>
-        <span class="bubble vp movt3"></span>
-        <span class="bubble mp movt3r"></span>
-        <span class="bubble mp movt4"></span>
-        <span class="bubble s movt4r"></span>
-      <span class="written">RÖDGRÖNA.</span>
-  </span>
-
+  <p id="chooseA">
+    Alliansen
+  </p>
+  <p id="chooseRG">
+    Rödgröna
+  </p>
+  </p>
 </div>
 
-<div id="pageCage">
+<div id="progress">
+  <div id="player"><span id="playervotes"></span></div>
+  <div id="computerSim"><span id="botvotes"></span></div>
+</div>
 
-	<div id="gameBoard">
+<div id="gameBoard">
+  <div id="playerStatus">
+    <h2 id="votes"></h2>
+    <h2 id="counter"></h2>
+  </div>
 
-		<div id="progressBar">
-      <div id="progress">
-        <div id="player"><span id="votes"></span></div>
-        <div id="computerSim"><span id="compVotes"></span></div>
-      </div>
-    </div>
-
-    <h1 id="counter">Coins: 0</h1>
-    <h1 id="botvotes">Tjena</h1>
-
-    <span id="opener"></span>
-    <div id="specs">
-      <ul>
-        <li>Karisma: <span id="spec1" class="spec"></span></li>
-        <li>Pålitlighet: <span id="spec2" class="spec"></span></li>
-        <li>Nåt mer: <span id="spec3" class="spec"></span></li>
-      </ul>
-    </div>
-
-		<div id="messageArea">
-
-		</div>
 		<div id="landingArea">
 
 		</div>
 		<div id="rosta" onclick="claimVote()" onMouseDown="kuvertNed()" onMouseUp="kuvertUpp()" onMouseOver="kuvertHover()" onMouseOut="kuvertAv()">
-
 		</div>
+  </div>
 
-	</div>
+<div id="midSection">
+
+  <div id="stats">
+  </div>
+
+  <div id="messageArea">
+  </div>
+
+  <span id="closer"></span>
+  <span id="opener"></span>
+  <div id="specs">
+    <ul>
+      <li><span id="budgetExplain" class="explain">Ökar chansen att få ett mynt och deras värde med 5%</span>Budgetplanering: <span id="amtBudget" class="spec"></span><button class="specBuy" id="buyBudget" onclick="talentTree.budgetSpec()"></button></li>
+      <li><span id="marketExplain" class="explain">Ökar dina röster per sekund med 2.5%</span>Marknadsföring: <span id="amtMarketing" class="spec"></span><button class="specBuy" id="buyMarketing" onclick="talentTree.marketingSpec()"></button></li>
+      <li><span id="retorikExplain" class="explain">Ökar dina röster per klick med 15%</span>Retorik: <span id="amtRetorik" class="spec"></span><button class="specBuy" id="buyRetorik" onclick="talentTree.retorikSpec()"></button></li>
+    </ul>
+  </div>
+
+</div>
 
 	<div id="shop">
 		<nav id="tabs">
@@ -112,14 +83,11 @@
     </div>
 	</div>
 
-	<div id="stats">
-
-	</div>
-</div>
 
 
 
-    <script  src="js/index.js"></script>
+
+<script src="js/index.js"></script>
 
 
 
