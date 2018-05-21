@@ -497,6 +497,7 @@ div.shopPage:hover {
 }
 div.shopPage::-webkit-scrollbar {
   height: 100%;
+  width: 5px;
 }
 div.shopPage::-webkit-scrollbar-button {
   background-color: rgba(0,0,0,0);
@@ -565,19 +566,32 @@ div.info {
 div.char.active:hover div.info {
   display: inline-block;
 }
-span.nextUpdate {
-  width: 150px;
-  padding: 10px;
-  box-sizing: border-box;
-  height: 40px;
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-}
 div#uppgr {
   display: none;
 }
-
+div.upgradeFrame {
+  width: 95%;
+  margin: 2.5%;
+  height: 80px;
+  color: #fff;
+}
+div.upgradeFrame:last-child {
+  margin-bottom: 100px;
+}
+h2.upgradeName {
+  font-size: 42px;
+  text-transform: uppercase;
+}
+p.createDesc, p.upgradeDescription {
+  font-size: 16px;
+  width: 50%;
+  margin: 5px;
+}
+p.createCost, p.upgradeCostText {
+  font-size: 35px;
+  float: right;
+  margin-top: -40px;
+}
 div#legender {
   display: none;
 }

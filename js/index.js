@@ -505,14 +505,13 @@ function unlockUpgrade(i)
 {
   var createDiv = document.createElement("div");
   var divId = upgrades[i].name;
-  var createName = document.createElement("p");
+  var createName = document.createElement("h2");
   var nameText = document.createTextNode(upgrades[i].name);
   var createDesc = document.createElement("p");
   var descText = document.createTextNode(upgrades[i].description);
   var createCost = document.createElement("p");
-  var costText = document.createTextNode("Kostnad: " + upgrades[i].cost);
+  var costText = document.createTextNode(upgrades[i].cost);
   createDiv.setAttribute("onclick", "upgrades["+i+"].load()");
-  createDiv.setAttribute("id", divId);
   createDiv.className = "upgradeFrame";
   createName.className = "upgradeName";
   createDesc.className = "upgradeDescription";
