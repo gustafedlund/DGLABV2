@@ -427,7 +427,11 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
 		createCost.setAttribute("id", costId); //Lägger till ID som tillåter framtida ändring
 	  createCost.className = "pricetag"; //class för pricetag utseende
 <<<<<<< HEAD
+<<<<<<< HEAD
 		createCost.innerHTML = "kostnad: " + char.cost + "R";
+=======
+		createCost.innerText = "kostnad: " + char.cost;
+>>>>>>> parent of 5189c7c... Revert "Merge branch 'master' of https://github.com/gustafedlund/DGLABV2"
 =======
 		createCost.innerText = "kostnad: " + char.cost;
 >>>>>>> parent of 5189c7c... Revert "Merge branch 'master' of https://github.com/gustafedlund/DGLABV2"
