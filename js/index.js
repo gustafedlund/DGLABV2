@@ -349,10 +349,12 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 
 function refresh() //Värden, element och dylit som behöver frekvent uppdatering
 {
-  playerVotes.innerHTML = "Röster: " + votes.toFixed(0);
-	counter.innerHTML = "Coins: " + coinAmount.toFixed(0);
+	playerVotes.innerHTML = votes.toFixed(0) + " R";
+	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
   vps.vpsCalc();
 	click.clickCalc();
+	refreshSpecs();
+	showProgress();
 }
 
 function claimVote() //Klicka på kakan för att få poäng
@@ -783,9 +785,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"Skillnaden mellan att kapa och skapa vårdköer är ett (S)."',
@@ -812,9 +814,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"Rysk gas har två nackdelar. Den ena är att den är gas, och den andra är att den är rysk."',
@@ -841,9 +843,9 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Det finns tre saker som jag tycker riktigt illa om: 1) socialism 2) arrogans 3) män som inte förstår ett nej."',
@@ -870,15 +872,14 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Det politiska samtalsklimatet plågas av gnällighet, ängslighet och stingslighet. Nu behövs några vuxna i rummet."',
 	},
 ];
-
 var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 [
 	Jonas =
