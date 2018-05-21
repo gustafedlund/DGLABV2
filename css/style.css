@@ -1,0 +1,587 @@
+/* färgteman
+RÖDGRÖNA:
+- - - - standard: #D22D2D
++ komplement: #2dd2d2
+
+ALLIANSEN:
+- - - - standard: #1D3092
++ komplement: #927f1d
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'VT323', monospace;
+}
+/*landing page - choose party*/
+#cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 800px;
+  background-color: #cccccc;
+  padding: 15% 20%;
+}
+#cover span.name {
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 700;
+  font-size: 50px;
+  position: relative;
+  display: inline-block;
+}
+span.name span.written {
+  position: absolute;
+  top: 80px;
+  left: 100px;
+}
+#rodgron:hover .bubble,
+#alliansen:hover .bubble {
+  opacity: 1;
+  transition: all 0.5s;
+}
+@keyframes move1 {
+  0% {top: 100px; left: 200px;}
+  25% {top: 30px; left: 60px;}
+  50% {top: 100px; left: 200px;}
+  75% {top: 170px; left: 340px;}
+  100% {top: 100px; left: 200px;}
+}
+@keyframes move2 {
+  0% {top: 100px; left: 200px;}
+  25% {top: 100px; left: 20px;}
+  50% {top: 100px; left: 200px;}
+  75% {top: 100px; left: 380px;}
+  100% {top: 100px; left: 200px;}
+}
+@keyframes move3 {
+  0% {top: 100px; left: 200px;}
+  25% {top: 170px; left: 60px;}
+  50% {top: 100px; left: 200px;}
+  75% {top: 30px; left: 340px;}
+  100% {top: 100px; left: 200px;}
+}
+@keyframes move4 {
+  0% {top: 100px; left: 200px;}
+  25% {top:190px; left:200px;}
+  50% {top: 100px; left: 200px;}
+  75% {top: 10px; left: 200px;}
+  100% {top: 100px; left: 200px;}
+}
+span.bubble {
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+}
+.vp {background-image: url("../images/rodgron/vp.png");}
+.mp{background-image: url("../images/rodgron/mp.png");}
+.s{background-image: url("../images/rodgron/s.png");}
+.l {background-image: url("../images/alliansen/l.png");}
+.kd {background-image: url("../images/alliansen/kd.png");}
+.c {background-image: url("../images/alliansen/c.png");}
+.m {background-image: url("../images/alliansen/m.png");}
+.movt1 {animation: move1 2s ease-in-out infinite;}
+.movt1r {animation: move1 2s ease-in-out infinite reverse;}
+.movt2 {animation: move2 2s ease-in-out infinite;}
+.movt2r {animation: move2 2s ease-in-out infinite reverse;}
+.movt3 {animation: move3 2s ease-in-out infinite;}
+.movt3r {animation: move3 2s ease-in-out infinite reverse;}
+.movt4 {animation: move4 2s ease-in-out infinite;}
+.movt4r {animation: move4 2s ease-in-out infinite reverse;}
+
+/*- - - - - - - - - - - - - - - - - - -page- - - - - - - - - - - - - - - - - - - - - -*/
+#pageCage {
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+}
+div#gameBoard {
+  height: 650px;
+  margin-top: 5px;
+  width: 64%;
+  display: inline-block;
+  position: relative;
+}
+div#progressBar {
+  width: 95%;
+  height: 32px;
+  background-color: #fff;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 2.5px;
+}
+div#progress {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 0;
+  position: relative;
+}
+div#player {
+  height: 27px;
+  width: 0px;
+  position: absolute;
+  left: 2.5px;
+  top: 2.5px;
+}
+div#computerSim {
+  height: 27px;
+  width: 0px;
+  position: absolute;
+  right: 2.5px;
+  top: 2.5px;
+}
+div#player span {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+div#computerSim span {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+div#player span, div#computerSim span {
+  font-size: 24px;
+  color: #fff;
+}
+div#specs {
+  width: 140px;
+  height: 200px;
+  padding: 5px 10px;
+  list-style-type: none;
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  display: none;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  text-transform: uppercase;
+  line-height: 30px;
+}
+span#opener, span#closer {
+  width: 20px;
+  height: 70px;
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  text-align: right;
+  padding-right: 2.5px;
+  padding-top: 12px;
+  border-radius: 0 15px 15px 0;
+  font-family: 'VT323', monospace;
+}
+span#opener::after {
+  content: ">";
+  font-size: 55px;
+}
+span#closer::after {
+  content: "<";
+  font-size: 55px;
+}
+
+div#messageArea {
+  width: 95%;
+  height: 20%;
+  position: absolute;
+  bottom: 2.5%;
+  right: 2.5%;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+}
+.message {
+  display: block;
+  color: #fff;
+}
+.message::before {
+  content: "» ";
+  font-size: 28px;
+}
+div#landingArea {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  margin: 20px;
+}
+.coin {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	background-color: #0F7;
+	opacity: 1;
+	top:300px;
+	left:300px;
+	animation: blink 10s ease-in-out 5s forwards;
+}
+@keyframes blink {
+	0% {opacity: 1;}
+	10% {opacity: 0;}
+	20% {opacity: 1;}
+	30% {opacity: 0;}
+	35% {opacity: 1;}
+	40% {opacity: 0;}
+	45% {opacity: 1;}
+	50% {opacity: 0;}
+	55% {opacity: 1;}
+	60% {opacity: 0;}
+	63% {opacity: 1;}
+	66% {opacity: 0;}
+	70% {opacity: 1;}
+	73% {opacity: 0;}
+	76% {opacity: 1;}
+	80% {opacity: 0;}
+	83% {opacity: 1;}
+	86% {opacity: 0;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
+}
+#legendToken {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	opacity: 1;
+	background-color: #CCC;
+	animation: pulse 5s ease-out 5;
+}
+#legendToken2 {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	opacity: 1;
+	background-color: #CCC;
+	animation: blink 10s forwards;
+}
+@keyframes pulse {
+	0% {transform: scale(1.0)}
+	40% {transform: scale(1.0)}
+	50% {transform: scale(1.2)}
+	60% {transform: scale(1.0)}
+	100% {transform: scale(1.0)}
+}
+div#rosta {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-image: url(http://pngimg.com/uploads/cookie/cookie_PNG13681.png);
+  background-size: 100% 100%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+	transform: scale(0.8);
+	animation: boingDown 200ms linear 1;
+}
+@keyframes boingDown {
+	0% {transform: scale(0.9)}
+	80% {transform: scale(0.75)}
+	90% {transform: scale(0.85)}
+	100% {transform: scale(0.8)}
+}
+div#rosta2 {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-image: url(http://pngimg.com/uploads/cookie/cookie_PNG13681.png);
+  background-size: 100% 100%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+	transform: scale(0.9);
+	animation: boingUp 200ms linear 1;
+}
+@keyframes boingUp {
+	0% {transform: scale(0.8)}
+	80% {transform: scale(0.85)}
+	90% {transform: scale(0.95)}
+	100% {transform: scale(0.9)}
+}
+div#rostaHover {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-image: url(http://pngimg.com/uploads/cookie/cookie_PNG13681.png);
+  background-size: 100% 100%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+	animation: boingHover 500ms ease-in-out 1;
+	transform: scale(0.9);
+}
+@keyframes boingHover {
+	0% {transform: scale(1)}
+	60% {transform: scale(0.85)}
+	80% {transform: scale(0.95)}
+	100% {transform: scale(0.9)}
+}
+div#rostaAv {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-image: url(http://pngimg.com/uploads/cookie/cookie_PNG13681.png);
+  background-size: 100% 100%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+	animation: boingAv 500ms linear 1;
+	transform: scale(1);
+}
+@keyframes boingAv {
+	0% {transform: scale(0.9)}
+	60% {transform: scale(0.95)}
+	80% {transform: scale(1.05)}
+	100% {transform: scale(1)}
+}
+#questBox {
+  width: 80%;
+  height: auto;
+  /*min-height:280px;*/
+  background-color: #FFF;
+  position: absolute;
+  top: 180px;
+  left: 10%;
+}
+div#shop {
+  height: 610px;
+  width: 350px;
+  margin-left: 10px;
+  display: inline-block;
+  float: right;
+  position: relative;
+}
+nav#tabs {
+  width: 100%;
+  margin: 5px 0 0 0;
+  padding: 0;
+}
+button.shopNav {
+  width: 140px;
+  height: 35px;
+  border: none;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-family: 'VT323', monospace;
+  color:  #2dd2d2;
+}
+button.shopNav:first-child,
+button.shopNav:last-child {
+  width: 95px;
+}
+nav#tabs button.shopNav.politiker {
+  border-radius: 0 15px 0 0;
+}
+nav#tabs button.shopNav.uppgr {
+  border-radius: 15px 15px 0 0;
+  margin: 0 1.2%;
+}
+nav#tabs button.shopNav.legender {
+  border-radius: 15px 0 0 0;
+  float: right;
+}
+div.shopPage {
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+div.shopPage:hover {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+div.shopPage::-webkit-scrollbar {
+  height: 100%;
+}
+div.shopPage::-webkit-scrollbar-button {
+  background-color: rgba(0,0,0,0);
+}
+div.shopPage::-webkit-scrollbar-track-piece {
+  background-color: rgba(0,0,0,0);
+}
+div.shopPage::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+div#politiker {
+  display: inline;
+}
+div.char {
+  width: 330px;
+  margin: 7px;
+  height: 150px;
+  position: relative;
+  background-repeat: no-repeat;
+  text-align: right;
+  color: #fff;
+}
+.char h2 {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 70%;
+  color: #fff;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 45px;
+}
+
+span.pricetag {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 16px;
+  color: #000;
+  height: 40px;
+  padding: 5px 5px 7.5px 50px;
+  background-image: url("../img-misc/pricetag_1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: -10px;
+  left: 120px;
+  animation: wave 3s linear infinite alternate;
+}
+@keyframes wave {
+  0% {transform: rotate(-5deg);}
+  50% {transform: rotate(-10deg);}
+  100% {transform: rotate(-5deg);}
+}
+.ebba {background-image: url("../images/alliansen/ebba-kd.png");}
+.annie {background-image: url("../images/alliansen/annie-c.png");}
+.jan {background-image: url("../images/alliansen/jan-l.png");}
+.ulf {background-image: url("../images/alliansen/ulf-m.png");}
+.gustav {background-image: url("../images/rodgron/gustav-mp.png");}
+.isabella {background-image: url("../images/rodgron/isabella-mp.png");}
+.jonas {background-image: url("../images/rodgron/jonas-v.png");}
+.stefan {background-image: url("../images/rodgron/stefan-s.png");}
+span.charCount {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  font-size: 50px;
+  color: #fff;
+}
+div.info {
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 14px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+  width: 330px;
+  height: 150px;
+  background-color: #fff;
+  color: #000;
+  z-index: 999;
+  text-align: center;
+}
+div.char.active:hover div.info {
+  display: inline-block;
+}
+span.nextUpdate {
+  width: 150px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 40px;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+button.buy {
+  width: 150px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+}
+div#uppgr {
+  display: none;
+}
+
+div#legender {
+  display: none;
+}
+
+div#stats {
+  margin-top: 5px;
+  height: 20%;
+  width: 100%;
+  display: inline-block;
+}
+
+#votes {
+  position: relative;
+  top: 80px;
+}
+
+#botvotes {
+  position: relative;
+  top: 120px;
+}
+
+/*/ End game win screen /*/
+#winform {
+  position: relative;
+  text-align: center;
+  top: 55%;
+
+}
+
+#windiv {
+  background-color: red;
+  text-align: center;
+  position: fixed;
+  right: 25%;
+  top: 20%;
+  height: 450px;
+  width: 50%;
+}
+
+#highscorename {
+  width: 35%;
+  height: 25px;
+}
+
+#highscorebutton {
+  width: 10%;
+  height: 29px;
+}
+
+#wintitle {
+  font-size: 42px;
+  position: relative;
+  top: 10%;
+}
+
+#winsubtitle {
+  position: relative;
+  font-size: 28px;
+  top: 15%;
+}
+
+#wintime {
+  position: relative;
+  font-size: 52px;
+  top: 30%;
+}
