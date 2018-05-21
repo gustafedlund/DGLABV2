@@ -423,7 +423,7 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
   var createCost = document.createElement("span");
 		createCost.setAttribute("id", costId); //Lägger till ID som tillåter framtida ändring
 	  createCost.className = "pricetag"; //class för pricetag utseende
-		createCost.innerHTML = char.cost + "R";
+		createCost.innerHTML = "kostnad: " + char.cost + "R";
 	//skapa h2 element som visar hur många av en karaktär spelaren har
   var createQuantity = document.createElement("h2");
 		createQuantity.setAttribute("id", quantityId);
