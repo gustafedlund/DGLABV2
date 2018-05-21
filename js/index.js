@@ -504,7 +504,7 @@ function lookForNewCharacter(i) //Skannar efter möjlighet att låsa upp nya sak
     document.getElementById("frame " + char.name).style.opacity = "0.6";
 		//ta bort class så att hover inte funkar när karaktären inte kan köpas
 		document.getElementById("frame " + char.name).classList.remove("active");
-		if(alliansen === true) {
+		if(Alliansen === true) {
 			document.getElementById("frame " + char.name).style.border = "#EC922B 3px dashed";
 		} else {
 			document.getElementById("frame " + char.name).style.border = "#d222d2 3px dashed";
