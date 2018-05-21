@@ -35,7 +35,7 @@ function valjAl() {
 	char = teamBlue;
 	farger();
 	gameLoad();
-	endGame.startTime();
+	endGame.timeStart();
 }
 function valjRg() {
 	document.getElementById("cover").style.display = "none";
@@ -43,7 +43,7 @@ function valjRg() {
 	char = teamRed;
 	farger();
 	gameLoad();
-	endGame.startTime();
+	endGame.timeStart();
 }
 document.getElementById("chooseA").addEventListener("click", valjAl);
 document.getElementById("chooseRG").addEventListener("click", valjRg);
