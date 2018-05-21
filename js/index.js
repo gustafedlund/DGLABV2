@@ -349,7 +349,7 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
   setInterval(function(){votes += (vps.votesPerSec/60);}, 1000/60);
 }
 
-function refresh() //Värden, element och dylit som behöver frekvent uppdatering
+function refresh() //Värden, element och dylikt som behöver frekvent uppdatering
 {
 	playerVotes.innerHTML = votes.toFixed(0) + " R";
 	counter.innerHTML = coinAmount.toFixed(0) + " SEK";

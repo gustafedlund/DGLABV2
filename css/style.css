@@ -591,10 +591,12 @@ div#stats {
 #votes {
   position: relative;
   top: 80px;
+  left: 10px;
 }
 #botvotes {
   position: relative;
   top: 120px;
+  left: 10px;
 }
 /*/ End game win screen /*/
 #winform {
