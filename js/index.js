@@ -904,9 +904,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + "R ";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"När jag hör Jimmie Åkesson prata om miljöfrågan, börjar jag tänka på ett sånt här flaskskepp, hur kom du in hit egentligen?"',
@@ -933,9 +933,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         vps.vpsValue += this.vps;
         this.cost = Math.ceil(this.cost*1.25);
         this.accumvps += this.vps; //Accumulated votes per sec for this char
-        document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+        document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-        document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+        document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
       }
     },
 		info: '"Det här är en kolbit."',
@@ -962,9 +962,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Det finns inga jobb på en död planet."',
@@ -991,9 +991,9 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				vps.vpsValue += this.vps;
 				this.cost = Math.ceil(this.cost*1.25);
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
-				document.getElementById("cost " + this.name).innerHTML = "Kostnad: " + this.cost;
+				document.getElementById("cost " + this.name).innerHTML = this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
-				document.getElementById("vps " + this.name).innerHTML = "Röster/s: " + this.accumvps;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
 			}
 		},
 		info: '"Men, eh... det är bara käbbel!"',
