@@ -1342,55 +1342,6 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	},
 ];
 
-
-/*//show characters
-var jonasInfo = '<p>"När jag hör Jimmie Åkesson prata om miljöfrågan, börjar jag tänka på ett sånt här flaskskepp, hur kom du in hit egentligen?"</p>';
-
-var price = 200;
-var count = 0;
-
-function showChar(name, party, imgclass, infotext) {
-  var charDiv = document.createElement("div");
-  charDiv.classList.add("char");
-  politiker.appendChild(charDiv);
-
-  var charName = document.createElement("span");
-  charName.classList.add("name");
-  charName.innerHTML = "<h2>" + count + " " + name + " ("+ party + ")" + "</h2>";
-  charDiv.appendChild(charName);
-
-  var charimage = document.createElement("span");
-  charimage.classList.add("image", imgclass);
-  charDiv.appendChild(charimage);
-
-  var pricetag = document.createElement("span");
-  pricetag.classList.add("pricetag");
-  pricetag.innerText = price + " R";
-  charDiv.appendChild(pricetag);
-
-
-
-	var nextUpdate = document.createElement("span");
-	nextUpdate.classList.add("nextUpdate");
-	nextUpdate.innerHTML = "<h3>RPS: 20<br>RPS: 40</h3>";
-	info.appendChild(nextUpdate);
-
-	var buyBtn = document.createElement("button");
-	buyBtn.innerText = "KÖP";
-	buyBtn.classList.add("buy");
-	info.appendChild(buyBtn);
-
-	if(alliansPartier.includes(party)) {
-		charDiv.setAttribute("style", "color: #2B85EC; border: #EC922B 3px dashed;");
-		buyBtn.setAttribute("style", "background-color: #2B85EC;");
-	} else {
-		charDiv.setAttribute("style", "color: #d22d2d; border: #2dd2d2 3px dashed;");
-		buyBtn.setAttribute("style", "background-color: #D22D2D;");
-	}
-}
-
-*/
-
 //BOT SECTION
 var botVotes = 0;
 var flatValue = 2;
@@ -1446,7 +1397,6 @@ function botUpgrades()
 
 
 /*/TALENT TREE/*/
-
 var talentTree =
 {
 	budget: 0,
@@ -1470,7 +1420,7 @@ var talentTree =
 		{
 			coinAmount -= this.costBudget;
 			this.budget++;
-			this.costBudget *= 1.05
+			this.costBudget *= 1.05;
 			//effekt
 			coinValue++;
 			coinRngSetting -= 0.25;
@@ -1482,7 +1432,7 @@ var talentTree =
 		{
 			coinAmount -= this.costMarketing;
 			this.marketing++;
-			this.costBudget *= 1.05;
+			this.costMarketing *= 1.05;
 			//effekt
 			vps.vpsMultiplier *= 1.025;
 		}
@@ -1492,13 +1442,33 @@ var talentTree =
 		if (coinAmount >= this.costRetorik)
 		{
 			coinAmount -= this.costRetorik;
+			this.retorik++;
 			this.costRetorik *= 1.05;
 			//effekt
 			click.talentClickMultiplier *= 1.15;
 		}
 	}
+};
+//function som håller specsen uppdaterade - placeras i gameloop för att uppdateras kontinuerligt
+function refreshSpecs() {
+	amtBudget.innerText = talentTree.budget;
+	amtMarketing.innerText = talentTree.marketing;
+	amtRetorik.innerText = talentTree.retorik;
+	buyBudget.innerText = talentTree.costBudget.toFixed(2) + "SEK";
+	buyMarketing.innerText = talentTree.costMarketing.toFixed(2) + "SEK";
+	buyRetorik.innerText = talentTree.costRetorik.toFixed(2) + "SEK";
 }
-
+//spans för att uppdatera mängden av specs
+var amtBudget = document.getElementById("amtBudget");
+var amtMarketing = document.getElementById("amtMarketing");
+var amtRetorik = document.getElementById("amtRetorik");
+//referenser till köpknapp för specs
+var buyBudget = document.getElementById("buyBudget");
+buyBudget.addEventListener("click", talentTree.budgetSpec());
+var buyMarketing = document.getElementById("buyMarketing");
+buyMarketing.addEventListener("click", talentTree.marketingSpec());
+var buyRetorik = document.getElementById("buyRetorik");
+buyRetorik.addEventListener("click", talentTree.retorikSpec());
 /*/END GAME OBJECT/*/
 var endGame =
 {
