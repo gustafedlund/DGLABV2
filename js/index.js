@@ -35,6 +35,7 @@ function valjAl() {
 	char = teamBlue;
 	farger();
 	gameLoad();
+	endGame.startTime();
 }
 function valjRg() {
 	document.getElementById("cover").style.display = "none";
@@ -42,6 +43,7 @@ function valjRg() {
 	char = teamRed;
 	farger();
 	gameLoad();
+	endGame.startTime();
 }
 document.getElementById("chooseA").addEventListener("click", valjAl);
 document.getElementById("chooseRG").addEventListener("click", valjRg);
@@ -355,6 +357,7 @@ function refresh() //Värden, element och dylit som behöver frekvent uppdaterin
 	click.clickCalc();
 	refreshSpecs();
 	showProgress();
+	endGame.check();
 }
 
 function claimVote() //Klicka på kakan för att få poäng
@@ -1491,7 +1494,7 @@ var endGame =
 	},
 	check: function() //Kollar efter vinst
 	{
-		if (votes === 0/*/this.majoritet+1/*/)
+		if (votes === this.majoritet+1)
 		{
 			this.timeEnd();
 			this.winframe();
