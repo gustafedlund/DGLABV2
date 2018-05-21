@@ -392,6 +392,7 @@ setInterval(gameloop, 33);
 
 
 //unlock characters
+
 function unlockCharacter(i) { //Låser upp karaktärer i spelet
 	//karaktärsurval beroende på parti
   if (Alliansen === true) {
@@ -425,36 +426,52 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
   var createCost = document.createElement("span");
 		createCost.setAttribute("id", costId); //Lägger till ID som tillåter framtida ändring
 	  createCost.className = "pricetag"; //class för pricetag utseende
-		createCost.innerHTML = char.cost + "R";
+		createCost.innerText = "kostnad: " + char.cost;
 	//skapa h2 element som visar hur många av en karaktär spelaren har
   var createQuantity = document.createElement("h2");
 		createQuantity.setAttribute("id", quantityId);
 		createQuantity.className = "characterQuantity";
 		createQuantity.innerText = char.quantity + " x ";
 		createQuantity.setAttribute("style", "display: inline;");
+
 	//skapa element som visas när en hovrar över karaktärsdiven
 	var info = document.createElement("div");
 		info.className = "info";
 		info.innerText = char.info;
 		createDiv.appendChild(info);
-	var createRPS = document.createElement("p");
-	  var RPSText = document.createTextNode("Varje " + char.name + " ger " + char.vps + " röster per sekund. Totalt " + char.accumvps + " röster per sekund.");
-		createRPS.appendChild(RPSText);
-	  createRPS.className = "characterTotalVps";
-	  createRPS.setAttribute("id", vpsId);
-		info.appendChild(createRPS);
-	//sätt färg runt karaktärsdiv beroende på lag
-	if (Alliansen == true) {
-		createDiv.setAttribute("style", "border: #EC922B 3px dashed;");
-		createCost.setAttribute("style", "text-shadow: -2px 0 #2B85EC, 0 2px #2B85EC, 2px 0 #2B85EC, 0 -2px #2B85EC");
+		//skapa knapp för att köpa karaktär
+			var buyBtn = document.createElement("button");
+			buyBtn.innerText = "KÖP";
+			buyBtn.classList.add("buy");
+			info.appendChild(buyBtn);
+				//färg baserat på lag
+				if(Alliansen === true) {
+					buyBtn.setAttribute("style", "background-color: #2B85EC;");
+				} else {
+					buyBtn.setAttribute("style", "background-color: #D22D2D;");
+				}
+/*
+
+	if(alliansPartier.includes(party)) {
+		charDiv.setAttribute("style", "color: #2B85EC; border: #EC922B 3px dashed;");
+		buyBtn.setAttribute("style", "background-color: #2B85EC;");
 	} else {
-		createDiv.setAttribute("style", "border: #2dd2d2 3px dashed;");
-		createCost.setAttribute("style", "text-shadow: -2px 0 #d22d2d, 0 2px #d22d2d, 2px 0 #d22d2d, 0 -2px #d22d2d");
-	}
+		charDiv.setAttribute("style", "color: #d22d2d; border: #2dd2d2 3px dashed;");
+		buyBtn.setAttribute("style", "background-color: #D22D2D;");
+	}*/
+
+
+  //var createRPS = document.createElement("p");
+  //var RPSText = document.createTextNode("Röster/s: " + char.accumvps);
+  //createRPS.className = "characterTotalVps";
+  //createRPS.setAttribute("id", vpsId);
+
 	//appenda alla nya element till diven där karaktären visas
   createDiv.appendChild(createName);
   createDiv.appendChild(createCost);
   createName.appendChild(NameText);
+  //createRPS.appendChild(RPSText);
+  //createDiv.appendChild(createRPS);
 	//appenda karaktärsdiven till boxen där karaktärerna visas (i shop - sida "politiker")
   document.getElementById("politiker").appendChild(createDiv);
 }
