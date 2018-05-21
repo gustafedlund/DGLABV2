@@ -36,6 +36,7 @@ function valjAl() {
 	farger();
 	gameLoad();
 	endGame.timeStart();
+	newMessage("hallå hallå, du som spelar för blå. klicka på kuvertet för att börja samla röster!");
 }
 function valjRg() {
 	document.getElementById("cover").style.display = "none";
@@ -44,6 +45,7 @@ function valjRg() {
 	farger();
 	gameLoad();
 	endGame.timeStart();
+	newMessage("nämen hej, så rödgrön är för dig? klicka på kuvertet för att börja samla röster!")
 }
 document.getElementById("chooseA").addEventListener("click", valjAl);
 document.getElementById("chooseRG").addEventListener("click", valjRg);
