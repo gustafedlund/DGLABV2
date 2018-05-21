@@ -1,24 +1,17 @@
 // HTML DOM VARIABLES
-var cover = document.getElementById("cover");
 var body = document.getElementsByTagName("body");
 var gameBoard = document.getElementById("gameBoard");
+var midSection = document.getElementById("midSection");
 var shop = document.getElementById("shop");
 var stats = document.getElementById("stats");
 var player = document.getElementById("player");
 var computerSim = document.getElementById("computerSim");
 var playerVotes = document.getElementById("votes");
-var compVotes = document.getElementById("compVotes");
 var notice = document.getElementById("messageArea");
-var specs = document.getElementById("specs");
-var opener = document.getElementById("opener");
 var messageArea = document.getElementById("messageArea");
 var shopNav = document.getElementsByClassName("shopNav");
 var shopPage = document.getElementsByClassName("shopPage");
 
-var alliansen = document.getElementById("alliansen");
-var rodgron = document.getElementById("rodgron");
-
-var team = [];
 var alliansPartier = ["l", "kd", "c", "m"];
 var rgPartier = ["vp", "mp", "mp", "s"];
 
@@ -32,132 +25,151 @@ lockedClick.play();
 var purchase = new Audio('purchase.wav');
 purchase.play();*/
 
-//här är jaaaaaag
-
-//changing color theme based on selection
-function allians() {
-	cover.setAttribute("style", "display: none;");
-	body[0].setAttribute("style", "background-color: #EC922B;");
-	gameBoard.setAttribute("style", "background-color: #2B85EC;");
-	stats.setAttribute("style", "background-color: #2B85EC;");
-	player.setAttribute("style", "background-color: #2B85EC;");
-	computerSim.setAttribute("style", "background-color: #d22d2d;");
-	specs.setAttribute("style", "background-color: #2b85ec; color: #EC922B;");
-	opener.setAttribute("style", "background-color: #2b85ec; color: #EC922B;");
-	shopNav[0].setAttribute("style", "background-color: #2B85EC; color: #EC922B;");
-	for (var i = 1; i < shopNav.length; i++) {
-		shopNav[i].setAttribute("style", "color: #EC922B;");
-	}
-	for (var j = 0; j < shopPage.length; j++) {
-		shopPage[j].setAttribute("style", "background-color: #2B85EC;");
-	}
+//Vilket lag?
+var Alliansen = false;
+var RödGröna = false;
+//välj lag från landingpage
+function valjAl() {
+	document.getElementById("cover").style.display = "none";
 	Alliansen = true;
 	char = teamBlue;
-	endGame.timeStart();
+	farger();
+	gameLoad();
 }
-function rodGron() {
-	cover.setAttribute("style", "display: none;");
-	body[0].setAttribute("style", "background-color: #2dd2d2;");
-	gameBoard.setAttribute("style", "background-color: #d22d2d;");
-	stats.setAttribute("style", "background-color: #d22d2d;");
-	player.setAttribute("style", "background-color: #d22d2d;");
-	computerSim.setAttribute("style", "background-color: #2B85EC;");
-	specs.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2;");
-	opener.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2;");
-	shopNav[0].setAttribute("style", "background-color: #d22d2d; color: #2dd2d2;");
-	for (var i = 1; i < shopNav.length; i++) {
-		shopNav[i].setAttribute("style", "color: #2dd2d2;");
-	}
-	for (var j = 0; j < shopPage.length; j++) {
-		shopPage[j].setAttribute("style", "background-color: #d22d2d;");
-	}
+function valjRg() {
+	document.getElementById("cover").style.display = "none";
 	RödGröna = true;
-	char = teamRed
+	char = teamRed;
+	farger();
+	gameLoad();
 }
-alliansen.addEventListener("click", allians);
-rodgron.addEventListener("click", rodGron);
-
-//top; progressbar
-var playerClicks = 0;
-var computer = 0;
-
-var opponent = setInterval(opponent, 500);
-
-//player playing by clicking cookie
-/*function clicking() {
-	var x = Math.round(Math.random() * 2);
-	playerVotes.innerHTML = playerClicks;
-	if((playerClicks + computer) < 60) {
-		if (x == 0) {
-			-- playerClicks;
-			player.style.width = (playerClicks * 10) + "px";
-			return playerClicks;
-		} else {
-			++ playerClicks;
-			player.style.width = (playerClicks * 10) + "px";
-			return playerClicks;
+document.getElementById("chooseA").addEventListener("click", valjAl);
+document.getElementById("chooseRG").addEventListener("click", valjRg);
+//funktion som sätter färg bereoende på lag
+function farger() {
+	if(Alliansen == true) {
+		body[0].style.backgroundColor = "#EC922B";
+		player.style.backgroundColor = "#2B85EC";
+		computerSim.style.backgroundColor = "#d22d2d";
+		gameBoard.style.backgroundColor = "#2B85EC";
+		gameBoard.style.borderRight = "5px solid #EC922B";
+		midSection.style.backgroundColor = "#2B85EC";
+		midSection.style.borderRight = "5px solid #EC922B";
+		specs.style.backgroundColor = "#2B85EC";
+		specs.style.color = "#EC922B";
+		opener.style.backgroundColor = "#EC922B";
+		opener.style.color = "#2B85EC";
+		closer.style.backgroundColor = "#EC922B";
+		closer.style.color = "#2B85EC";
+		shopNav[0].style.backgroundColor = "#2B85EC";
+		shopNav[0].style.color = "#EC922B";
+		for (var i = 1; i < shopNav.length; i++) {
+			shopNav[i].style.color = "#EC922B";
+		}
+		for (var j = 0; j < shopPage.length; j++) {
+			shopPage[j].style.backgroundColor = "#2B85EC";
 		}
 	} else {
-		clearInterval(opponent);
-		if (computer < playerClicks) {
-				printMessage("you win");
-		} else {
-				printMessage("you lose");
+		body[0].style.backgroundColor = "#2dd2d2";
+		player.style.backgroundColor = "#d22d2d";
+		computerSim.style.backgroundColor = "#2B85EC";
+		gameBoard.style.backgroundColor = "#d22d2d";
+		gameBoard.style.borderRight = "5px solid #2dd2d2";
+		midSection.style.backgroundColor = "#d22d2d";
+		midSection.style.borderRight = "5px solid #2dd2d2";
+		specs.style.backgroundColor = "#2dd2d2";
+		specs.style.color = "#d22d2d";
+		opener.style.backgroundColor = "#2dd2d2";
+		opener.style.color = "#d22d2d";
+		closer.style.backgroundColor = "#2dd2d2";
+		closer.style.color = "#d22d2d";
+		shopNav[0].style.backgroundColor = "#d22d2d";
+		shopNav[0].style.color = "#2dd2d2";
+		for (var k = 1; k < shopNav.length; k++) {
+			shopNav[k].style.color = "#2dd2d2";
+		}
+		for (var l = 0; l < shopPage.length; l++) {
+			shopPage[l].style.backgroundColor = "#d22d2d";
 		}
 	}
 }
-//computer playing / click simulation
-function opponent() {
-	var x = Math.round(Math.random() * 2);
-	compVotes.innerHTML = computer;
-	while((computer + playerClicks) < 60) {
-		if (x == 0) {
-			-- computer;
-			computerSim.style.width = (computer * 10) + "px";
-			return computer;
+//top-progressbar: illustrerar hur många röster spelaren & boten har
+function showProgress() {
+	//spelarens röster
+	document.getElementById("player").style.width = votes * (50/3500000) + "%";
+	document.getElementById("playervotes").innerText = votes.toFixed(0);
+	//visa röster PÅ progressbar tills det finns plats att visa I bar
+		if (votes.toFixed(0).toString().length < 6) {
+			document.getElementById("playervotes").setAttribute("style", "position: fixed; top: 2.5px; left: 5px;");
+				if (Alliansen == true) {
+					document.getElementById("playervotes").setAttribute("style", "color: #2B85EC;");
+				} else {
+					document.getElementById("playervotes").setAttribute("style", "color: #d22d2d;");
+				}
 		} else {
-			++ computer;
-			computerSim.style.width = (computer * 10) + "px";
-			return computer;
+			document.getElementById("playervotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-end;");
 		}
-	}
-	if (playerClicks + computer == 60) {
-		return false;
-	}
-}*/
-//left - specs
+	//boten annas röster
+	document.getElementById("computerSim").style.width = botVotes * (50/3500000) + "%";
+	document.getElementById("botvotes").innerText = botVotes.toFixed(0);
+	//visa röster PÅ progressbar tills det finns plats att visa I bar
+		if (botVotes.toFixed(0).toString().length < 6) {
+			document.getElementById("botvotes").setAttribute("style", "position: fixed; top: 2.5px; right: 50px;");
+				if (Alliansen == true) {
+					document.getElementById("botvotes").setAttribute("style", "color: #d22d2d;");
+				} else {
+					document.getElementById("botvotes").setAttribute("style", "color: #2B85EC;");
+				}
+		} else {
+			document.getElementById("botvotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-start;");
+		}
+}
+//midSection - specs
+var opener = document.getElementById("opener");
+var closer = document.getElementById("closer");
+var specs = document.getElementById("specs");
 function viewSpecs() {
-  //open specs on click
-  specs.setAttribute("style", "display: inline;");
-  opener.setAttribute("style", "left: 160px;");
-	if(alliansen === true) {
-		specs.setAttribute("style", "background-color: #2b85ec; color: #EC922B; display: inline;");
-		opener.setAttribute("style", "background-color: #2b85ec; color: #EC922B; left: 160px;");
+	opener.setAttribute("style", "display: none");
+	closer.setAttribute("style", "display: inline;");
+	specs.setAttribute("style", "display: inline");
+	if (Alliansen == true) {
+		specs.style.backgroundColor = "#EC922B";
+		specs.style.color = "#2B85EC";
+		opener.style.backgroundColor = "#EC922B";
+		opener.style.color = "#2B85EC";
+		closer.style.backgroundColor = "#EC922B";
+		closer.style.color = "#2B85EC";
 	} else {
-		specs.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; display: inline;");
-		opener.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; left: 160px;");
+		specs.style.backgroundColor = "#2dd2d2";
+		specs.style.color = "#d22d2d";
+		opener.style.backgroundColor = "#2dd2d2";
+		opener.style.color = "#d22d2d";
+		closer.style.backgroundColor = "#2dd2d2";
+		closer.style.color = "#d22d2d";
 	}
-  //change look of opener when open by changing id
-  opener.id = "closer";
 }
-//close specs
 function closeSpecs() {
-	if(team.includes("alliansen")) {
-		specs.setAttribute("style", "background-color: #2b85ec; color: #EC922B; display: none;");
-		opener.setAttribute("style", "background-color: #2b85ec; color: #EC922B; left: 0px;");
-		opener.id = "opener";
+	opener.setAttribute("style", "display: inline");
+	closer.setAttribute("style", "display: none;");
+	specs.setAttribute("style", "display: none");
+	if (Alliansen == true) {
+		specs.style.backgroundColor = "#EC922B";
+		specs.style.color = "#2B85EC";
+		opener.style.backgroundColor = "#EC922B";
+		opener.style.color = "#2B85EC";
+		closer.style.backgroundColor = "#EC922B";
+		closer.style.color = "#2B85EC";
 	} else {
-		specs.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; display: none;");
-		opener.setAttribute("style", "background-color: #d22d2d; color: #2dd2d2; left: 0px;");
-		opener.id = "opener";
+		specs.style.backgroundColor = "#2dd2d2";
+		specs.style.color = "#d22d2d";
+		opener.style.backgroundColor = "#2dd2d2";
+		opener.style.color = "#d22d2d";
+		closer.style.backgroundColor = "#2dd2d2";
+		closer.style.color = "#d22d2d";
 	}
 }
-opener.addEventListener("mouseover", viewSpecs);
-specs.addEventListener("mouseover", viewSpecs);
-opener.addEventListener("mouseout", closeSpecs);
-specs.addEventListener("mouseout", closeSpecs);
-
-
+opener.addEventListener("click", viewSpecs);
+closer.addEventListener("click", closeSpecs);
 //sidebar; shop - navigating through tabs
 function visaSida(sida) {
 	var currentPage = document.getElementsByClassName(sida);
@@ -169,49 +181,44 @@ function visaSida(sida) {
   uppgr.style.display = "none";
   legender.style.display = "none";
 
-	if (team.includes("alliansen")) {
+	if (Alliansen == true) {
 		//change color of inactive buttons
 		for (var i = 0; i < shopNav.length; i++) {
 			shopNav[i].style.backgroundColor = "#fff";
+			shopNav[i].style.color = "#2B85EC";
 		}
 		currentPage[0].style.backgroundColor = "#2b85ec";
+		currentPage[0].style.color = "#EC922B";
 	} else {
 		for (var j = 0; j < shopNav.length; j++) {
 			shopNav[j].style.backgroundColor = "#fff";
+			shopNav[j].style.color = "#2dd2d2";
 		}
 		currentPage[0].style.backgroundColor = "#d22d2d";
 	}
   currentPage[1].style.display = "inline";
 }
-
 //messages
-function printMessage(message) {
-	var messageArray = [];
-  messageArea.innerHTML = "";
-  messageArray.push(message);
+function newMessage(message) {
+	messageArea.innerHTML = ""
+	messageArea.style.display = "inline";
+	if (Alliansen == true) {
+		messageArea.style.color = "#2B85EC";
+	} else {
+		messageArea.style.color = "#d22d2d";
+	}
+	var msg = document.createElement("p");
+	msg.className = "message";
+	msg.innerText = message;
+	messageArea.appendChild(msg);
 
-  for (var i = 0; i < messageArray.length; i++) {
-    var msg = document.createElement("p");
-    msg.className = "message";
-    msg.innerHTML += messageArray[i];
-    messageArea.appendChild(msg);
-  }
-  var fix = messageArea.lastChild;
-  fix.setAttribute("style", "position: absolute; bottom: 10px; left: 10px;");
-
-  if(messageArray.length > 1) {
-  var last2 = fix.previousSibling;
-  last2.setAttribute("style", "position: absolute; bottom: 30px; left: 10px; color: rgba(255, 255, 255, 0.7)");
-    if(messageArray.length > 2) {
-      var last3 = last2.previousSibling;
-      last3.setAttribute("style", "position: absolute; bottom: 50px; left: 10px; color: rgba(255, 255, 255, 0.3)");
-    }
-  }
-  if(messageArray.length >= 3) {
-    var length = messageArray.length - 2;
-    messageArray.splice(0, length);
-  }
-	return messageArray;
+	var closeMessage = document.createElement("SPAN");
+	closeMessage.classList.add("closeMessage");
+	messageArea.appendChild(closeMessage);
+		function close() {
+			messageArea.style.display = "none";
+		}
+	closeMessage.addEventListener("click", close);
 }
 
 var rosta = document.getElementById('rosta');
@@ -227,7 +234,6 @@ function kuvertHover() {
 function kuvertAv() {
 	rosta.setAttribute('id', 'rostaAv');
 }
-
 
 
 // GAME LOGIC *********************************************************************************************************************
