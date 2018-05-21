@@ -444,13 +444,11 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
 	  createRPS.setAttribute("id", vpsId);
 		info.appendChild(createRPS);
 	//sätt färg runt karaktärsdiv beroende på lag
-	/*/if (Alliansen == true) {
-		createDiv.setAttribute("style", "border: #EC922B 3px dashed;");
+	if (Alliansen == true) {
 		createCost.setAttribute("style", "text-shadow: -2px 0 #2B85EC, 0 2px #2B85EC, 2px 0 #2B85EC, 0 -2px #2B85EC");
 	} else {
-		createDiv.setAttribute("style", "border: #2dd2d2 3px dashed;");
 		createCost.setAttribute("style", "text-shadow: -2px 0 #d22d2d, 0 2px #d22d2d, 2px 0 #d22d2d, 0 -2px #d22d2d");
-	}/*/
+	}
 	//appenda alla nya element till diven där karaktären visas
   createDiv.appendChild(createName);
   createDiv.appendChild(createCost);
@@ -490,7 +488,7 @@ function lookForNewCharacter(i) //Skannar efter möjlighet att låsa upp nya sak
 		if(Alliansen === true) {
 			document.getElementById("frame " + char.name).style.border = "#EC922B 3px dashed";
 		} else {
-			document.getElementById("frame " + char.name).style.border = "#d222d2 3px dashed";
+			document.getElementById("frame " + char.name).style.border = "#2dd2d2 3px dashed";
 		}
   }
   //Kod för att ta bort fejden när en har råd
@@ -503,6 +501,7 @@ return;
 
 function unlockUpgrade(i)
 {
+	//skapar span och info för uppgradering
   var createDiv = document.createElement("div");
   var divId = upgrades[i].name;
   var createName = document.createElement("h2");
@@ -512,7 +511,8 @@ function unlockUpgrade(i)
   var createCost = document.createElement("p");
   var costText = document.createTextNode(upgrades[i].cost + upgrades[i].valuta);
   createDiv.setAttribute("onclick", "upgrades["+i+"].load()");
-  createDiv.className = "upgradeFrame";
+	createDiv.id = divId;
+	createDiv.className = "upgradeFrame";
   createName.className = "upgradeName";
   createDesc.className = "upgradeDescription";
   createCost.className = "upgradeCostText";
@@ -1048,7 +1048,7 @@ var quest = [
 
 var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 [
-  ImprovedClicks =
+  ImprovedClicks = //upgrades[0]
   {
     name: "Förbättrade Klickningar",
     description: "Klickningar ger fler röster (+2% av din totala röster/s)",
@@ -1070,7 +1070,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
       }
     }
   },
-	ImprovedClicks2 =
+	ImprovedClicks2 = //upgrades[1]
 	{
 		name: "Brinnande fingrar",
     description: "Klickningar ger fler röster (+2% av din totala röster/s)",
@@ -1080,7 +1080,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
     unlocked: false,
     unlock: function()
     {
-      this.unlocked = true;
+				this.unlocked = true;
     },
     load: function()
     {
@@ -1092,7 +1092,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
       }
     }
 	},
-	ImprovedClicks3 =
+	ImprovedClicks3 = //upgrades[2]
 	{
 		name: "Krampande fingrar",
     description: "Klickningar ger fler röster (+2% av din totala röster/s)",
@@ -1292,7 +1292,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	},
 	Inflation2 =
 	{
-		name: "Mer Inflation",
+		name: "Hyperinflation",
 		description: "Ökar chansen att få ett mynt.",
 		cost: 15000,
 		valuta: "R",
@@ -1358,7 +1358,7 @@ function botIncrement()
 	botIncrValue();
 	adaptLogics();
 	botUpgrades();
-	botVotesHTML.innerHTML = botVotes;
+	botVotesHTML.innerHTML = botVotes.toFixed(0);
 
 
 }
