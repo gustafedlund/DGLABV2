@@ -444,13 +444,13 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
 	  createRPS.setAttribute("id", vpsId);
 		info.appendChild(createRPS);
 	//sätt färg runt karaktärsdiv beroende på lag
-	if (Alliansen == true) {
+	/*/if (Alliansen == true) {
 		createDiv.setAttribute("style", "border: #EC922B 3px dashed;");
 		createCost.setAttribute("style", "text-shadow: -2px 0 #2B85EC, 0 2px #2B85EC, 2px 0 #2B85EC, 0 -2px #2B85EC");
 	} else {
 		createDiv.setAttribute("style", "border: #2dd2d2 3px dashed;");
 		createCost.setAttribute("style", "text-shadow: -2px 0 #d22d2d, 0 2px #d22d2d, 2px 0 #d22d2d, 0 -2px #d22d2d");
-	}
+	}/*/
 	//appenda alla nya element till diven där karaktären visas
   createDiv.appendChild(createName);
   createDiv.appendChild(createCost);
