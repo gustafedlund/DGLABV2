@@ -510,7 +510,7 @@ function unlockUpgrade(i)
   var createDesc = document.createElement("p");
   var descText = document.createTextNode(upgrades[i].description);
   var createCost = document.createElement("p");
-  var costText = document.createTextNode(upgrades[i].cost);
+  var costText = document.createTextNode(upgrades[i].cost + upgrades[i].valuta);
   createDiv.setAttribute("onclick", "upgrades["+i+"].load()");
   createDiv.className = "upgradeFrame";
   createName.className = "upgradeName";
@@ -1053,6 +1053,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
     name: "Förbättrade Klickningar",
     description: "Klickningar ger fler röster (+2% av din totala röster/s)",
     cost: 350,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1074,6 +1075,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Brinnande fingrar",
     description: "Klickningar ger fler röster (+2% av din totala röster/s)",
     cost: 12500,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1095,6 +1097,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Krampande fingrar",
     description: "Klickningar ger fler röster (+2% av din totala röster/s)",
     cost: 85000,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1116,6 +1119,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Kvantitet > Kvalitet",
     description: "Varje klick genererar 1 extra röst för varje ägda karaktär",
     cost: 64500,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1137,6 +1141,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
     name: "Röster Galore",
     description: "Ökar dina röster/s med 20%!",
     cost: 500,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1158,6 +1163,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
     name: "Röster GALORE!",
     description: "Ökar dina röster/s med 35%!",
     cost: 5000,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1179,6 +1185,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
     name: "RÖSTER GALORE!!",
     description: "Ökar dina röster/s med 50%!",
     cost: 500000,
+		valuta: "R",
     //image:
     unlocked: false,
     unlock: function()
@@ -1200,6 +1207,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Stark Krona",
 		description: "Värdet på mynt dubbleras",
 		cost: 3000,
+		valuta: "R",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1221,6 +1229,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Starkare Krona",
 		description: "Värdet på mynt dubbleras, igen!",
 		cost: 15000,
+		valuta: "R",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1242,6 +1251,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Krona på Steroider",
 		description: "Värdet på mynt dubbleras, ytterligare en gång!",
 		cost: 115000,
+		valuta: "R",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1263,6 +1273,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Inflation",
 		description: "Ökar chansen att få ett mynt.",
 		cost: 1500,
+		valuta: "R",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1284,6 +1295,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Mer Inflation",
 		description: "Ökar chansen att få ett mynt.",
 		cost: 15000,
+		valuta: "R",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1305,6 +1317,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		name: "Löneförminskning",
 		description: "Alla politiker kostar nu 33% mindre.",
 		cost: 150000,
+		valuta: "R",
 		//image:
 		unlocked: false,
 		unlock: function()
