@@ -389,7 +389,7 @@ function claimVote() //Klicka på kakan för att få poäng
 {
   votes+=click.votesPerClick;
 	statistics.totalVotes += click.votesPerClick;
-	++statistics.totalClicks;
+	++statistics.totalClicks.toFixed(0);
 	coinRng = Math.floor(Math.random()*20);
 	coinRngSetting = 19;
 	if (coinRng >= coinRngSetting)
@@ -569,7 +569,7 @@ function lookForNewUpgrade(i)
 
 //spawn coins
 
-var positionsY = [0, 50, 100, 150, 200, 450, 500, 550, 600, 650];	//All possible x & y coordinates
+var positionsY = [0, 50, 100, 150, 200, 250, 500, 550, 600, 650];	//All possible x & y coordinates
 var positionsX = [0, 50, 100, 150, 200, 250, 300];
 
 var container = document.getElementById("landingArea");
@@ -659,8 +659,8 @@ function moveCoin(xPos, yPos) {
 		    		y = y - 4;
 		    	} else if (yPos == 200) {
 		    		y = y - 3;
-					} else if (yPos == 450) {
-		    		y = y + 2;
+					} else if (yPos == 250) {
+						y = y - 2;
 		    	} else if (yPos == 500) {
 		    		y = y + 3;
 		    	} else if (yPos == 550) {
@@ -733,7 +733,7 @@ function spawnLegendToken() {
 		clearTimeout(preventDelete); //Prevents token from being deleted after a while since it is already picked up
 	});
 
-	randomSpawn = Math.floor(Math.random() * 300000) + 180000; //New time for token to spawn
+	randomSpawn = Math.floor(Math.random() * 120000) + 60000; //New time for token to spawn
 	preventDelete = setTimeout(blinkToken, 30000);
 	generatePosition(isToken);
 }
@@ -1310,7 +1310,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Kvantitet > Kvalitet",
     description: "Varje klick genererar 1 extra röst för varje ägda karaktär",
-    cost: 250,
+    cost: 2500,
 		valuta: "SEK",
     //image:
     unlocked: false,
@@ -1332,7 +1332,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster Galore",
     description: "Ökar dina röster/s med 20%!",
-    cost: 1000,
+    cost: 7500,
 		valuta: "R",
     //image:
     unlocked: false,
@@ -1354,7 +1354,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster GALORE!",
     description: "Ökar dina röster/s med 35%!",
-    cost: 5000,
+    cost: 25000,
 		valuta: "R",
     //image:
     unlocked: false,
@@ -1442,7 +1442,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Krona på Steroider",
 		description: "Värdet på mynt dubbleras, ytterligare en gång!",
-		cost: 5000,
+		cost: 3000,
 		valuta: "SEK",
 		//image:
 		unlocked: false,
@@ -1486,7 +1486,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Hyperinflation",
 		description: "Ökar chansen att få ett mynt.",
-		cost: 1000,
+		cost: 1750,
 		valuta: "R",
 		//image:
 		unlocked: false,
