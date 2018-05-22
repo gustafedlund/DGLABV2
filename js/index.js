@@ -536,7 +536,7 @@ function lookForNewUpgrade(i)
 
 //spawn coins
 
-var positions = [0, 50, 100, 150, 200, 300, 400, 450, 500, 550];	//All possible x & y coordinates
+var positions = [0, 50, 100, 150, 200, 300, 400, 450, 500, 550, 600];	//All possible x & y coordinates
 
 var container = document.getElementById("landingArea");
 var counter = document.getElementById("counter");
