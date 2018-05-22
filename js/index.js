@@ -1136,7 +1136,50 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 
 var legendaryHero = //Array med SECRET HEROES OMFG (som objekt)
 [
-
+	Gudrun =
+	{
+		name: "Gudrun Schyman",
+		quantity: 0,
+		cost: 10
+		descr: "Gudrun bränner ALLA dina pengar... Men dubblar också dina röster!",
+		load: function() {
+			if (tokenAmount >= this.cost && this.quantity == 0) {
+				tokenAmount-=this.cost;
+				this.quantity++;
+				coinAmount = 0;
+				votes = votes*2;
+			}
+		},
+	},
+	Palme =
+	{
+		name: "Olof Palme",
+		quantity: 0,
+		cost: 10,
+		descr: "Palme kan snacka, han. Ger 100 extra retorikpoäng!",
+		load: function() {
+			if (tokenAmount >= this.cost && this.quantity == 0) {
+				tokenAmount-=this.cost;
+				this.quantity++;
+				talentTree.retorik += 100;
+			}
+		},
+	},
+	Kungen =
+	{
+		name: "Kung XVI Gustaf",
+		quantity: 0,
+		cost: 20,
+		descr: "Instant win! Har du kungen på din sida, då jävlar..!",
+		load: function() {
+			if (tokenAmount >= this.cost && this.quantity == 0) {
+				tokenAmount-=this.cost;
+				this.quantity++;
+				endGame.winframe();
+				clearInterval(loopInterval);
+			}
+		},
+	}
 ];
 
 var quest = [
