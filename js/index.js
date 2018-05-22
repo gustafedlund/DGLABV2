@@ -765,6 +765,11 @@ function removeToken() {
 	 }
 };
 
+function refreshStats() {
+	document.getElementById("timePlayed").innerText = " " + statistics.timePlayed;
+	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
+}
+
 /*/Objekt
 ----------------
 --------------/*/
