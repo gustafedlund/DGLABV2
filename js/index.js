@@ -235,7 +235,7 @@ function newMessage(message) {
 	closeMessage.addEventListener("click", close);
 }
 
-var rosta = document.getElementById('rosta');
+var rosta = document.getElementById('rostaAv');
 function kuvertNed() {
 	rosta.setAttribute('id', 'rosta');
 }
