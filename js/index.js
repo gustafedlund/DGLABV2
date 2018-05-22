@@ -389,7 +389,7 @@ function claimVote() //Klicka på kakan för att få poäng
 {
   votes+=click.votesPerClick;
 	statistics.totalVotes += click.votesPerClick;
-	++statistics.totalClicks.toFixed(0);
+	++statistics.totalClicks;
 	coinRng = Math.floor(Math.random()*20);
 	coinRngSetting = 19;
 	if (coinRng >= coinRngSetting)
@@ -778,10 +778,11 @@ function removeToken() {
 };
 function refreshStats() {
 	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
-	document.getElementById("totalVotes").innerText = statistics.totalVotes;
+	document.getElementById("totalVotes").innerText = statistics.totalVotes.toFixed(0);
 	document.getElementById("totalMoney").innerText = statistics.totalMoney.toFixed(0);
 	document.getElementById("totalCoins").innerText = statistics.totalCoins;
 	document.getElementById("charactersOwned").innerText = document.getElementById("lineup").childNodes.length - 1;
+	document.getElementById("votesPerClick").innerText = statistics.votesPerClick.toFixed(0);
 }
 /*/Objekt
 ----------------
@@ -1140,7 +1141,7 @@ var legendaryHero = //Array med SECRET HEROES OMFG (som objekt)
 	{
 		name: "Gudrun Schyman",
 		quantity: 0,
-		cost: 10
+		cost: 10,
 		descr: "Gudrun bränner ALLA dina pengar... Men dubblar också dina röster!",
 		load: function() {
 			if (tokenAmount >= this.cost && this.quantity == 0) {
