@@ -1118,8 +1118,8 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Kvantitet > Kvalitet",
     description: "Varje klick genererar 1 extra röst för varje ägda karaktär",
-    cost: 64500,
-		valuta: "R",
+    cost: 250,
+		valuta: "SEK",
     //image:
     unlocked: false,
     unlock: function()
@@ -1128,9 +1128,9 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
     },
     load: function()
     {
-      if (votes >= this.cost)
+      if (coinAmount >= this.cost)
       {
-        votes -= this.cost;
+        coinAmount -= this.cost;
 				click.bonusPerChar = true;
         document.getElementById("uppgr").removeChild(document.getElementById(this.name));
       }
@@ -1206,8 +1206,8 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Stark Krona",
 		description: "Värdet på mynt dubbleras",
-		cost: 3000,
-		valuta: "R",
+		cost: 1500,
+		valuta: "SEK",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1216,9 +1216,9 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		},
 		load: function()
 		{
-			if (votes >= this.cost)
+			if (coinAmount >= this.cost)
 			{
-				votes -= this.cost;
+				coinAmount -= this.cost;
 				coinValue *= 2;
 				document.getElementById("uppgr").removeChild(document.getElementById(this.name));
 			}
@@ -1228,8 +1228,8 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Starkare Krona",
 		description: "Värdet på mynt dubbleras, igen!",
-		cost: 15000,
-		valuta: "R",
+		cost: 3000,
+		valuta: "SEK",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1238,9 +1238,9 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		},
 		load: function()
 		{
-			if (votes >= this.cost)
+			if (coinAmount >= this.cost)
 			{
-				votes -= this.cost;
+				coinAmount -= this.cost;
 				coinValue *= 2;
 				document.getElementById("uppgr").removeChild(document.getElementById(this.name));
 			}
@@ -1250,8 +1250,8 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Krona på Steroider",
 		description: "Värdet på mynt dubbleras, ytterligare en gång!",
-		cost: 115000,
-		valuta: "R",
+		cost: 8500,
+		valuta: "SEK",
 		//image:
 		unlocked: false,
 		unlock: function()
@@ -1260,9 +1260,9 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 		},
 		load: function()
 		{
-			if (votes >= this.cost)
+			if (coinAmount >= this.cost)
 			{
-				votes -= this.cost;
+				coinAmount -= this.cost;
 				coinValue *= 2;
 				document.getElementById("uppgr").removeChild(document.getElementById(this.name));
 			}
