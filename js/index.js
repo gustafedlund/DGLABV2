@@ -341,6 +341,7 @@ var click = //Objekt som håller allt nödvändigt för clicks
 			for (var i = 0; i < char.length; i++)
 			{
 				sum += char[i].quantity;
+				statistics.charactersOwned += char[i].quantity;
 			}
 			return sum;
 		}
@@ -406,7 +407,7 @@ function gameloop()
     lookForNewUpgrade(j);
   }
 
-	statistics.getValues(); //Updates statistics
+	statistics.getValues(); //Update statistics
 }
 var loopInterval = setInterval(gameloop, 33);
 
@@ -757,11 +758,12 @@ function removeToken() {
 	 timePlayed: 0,
 	 charactersOwned: 0,
 	 moneyValue: 0,
-	 votesPerSecondMultiplier: 0,
+	 votesPerSecondMultiplier: 0, //done
 	 getValues: function() {
 		 this.votesPerClick = click.votesPerClick;
 		 this.votesPerSecond = vps.votesPerSec;
-		 this.votesPerSecondMultiplier;
+		 this.votesPerSecondMultiplier = vps.vpsMultiplier;
+		 this.moneyValue = coinValue;
 	 }
 };
 
