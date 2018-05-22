@@ -101,7 +101,7 @@ div#gameBoard {
 }
 #playerStatus {
   text-align: center;
-  position: relative;
+  position: absolute;
   width: 80%;
   padding: 10px;
   height: 200px;
@@ -118,6 +118,19 @@ h2#vps {
   font-size: 20px;
   position: relative;
   top: 10%;
+}
+h2#counter {
+  position: relative;
+  font-size: 55px;
+  left: 25%;
+  bottom: 10%;
+
+}
+h2#counter::before {
+  content: url("../img-misc/mini/MINI-kr.png");
+  text-align: center;
+  margin-right: 10px;
+
 }
 div#landingArea {
   width: 100%;
@@ -305,12 +318,8 @@ p#dinRiksdag {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  font-size: 20px;
+  font-size: 30px;
   color: #fff;
-  visibility: hidden;
-}
-div#riksdag:hover p {
-  visibility: visible;
 }
 .lineUpPps {
   width: 10%;
@@ -319,6 +328,32 @@ div#riksdag:hover p {
   background-repeat: no-repeat;
   background-position: top;
   display: inline-block;
+}
+#statistik {
+  color: #fff;
+  width: 95%;
+  padding: 10px;
+  height: 30%;
+  position: relative;
+  margin: 2.5%;
+  overflow: hidden;
+}
+#statistik:hover {
+  overflow-y: scroll;
+  outline: 1px #fff dashed;
+}
+#statTitle {
+  float: right;
+  font-size: 30px;
+}
+#timePlayed {
+  font-size: 40px;
+}
+#clicksClicked {
+  font-size: 25px;
+}
+#clicksClicked::after {
+  content: " klickningar";
 }
 span#opener {
   width: 20px;

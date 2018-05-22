@@ -367,7 +367,7 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 function refresh() //Värden, element och dylikt som behöver frekvent uppdatering
 {
 	playerVotes.innerHTML = votes.toFixed(0);
-	counter.innerHTML = coinAmount.toFixed(1) + " SEK";
+	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
 	document.getElementById("vps").innerHTML = "per sekund: " + vps.votesPerSec.toFixed(0);
 	tokenConvert.tokenDOM.innerHTML = tokenAmount;
 
@@ -766,6 +766,11 @@ function removeToken() {
 		 this.moneyValue = coinValue;
 	 }
 };
+
+function refreshStats() {
+	document.getElementById("timePlayed").innerText = " " + statistics.timePlayed;
+	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
+}
 
 /*/Objekt
 ----------------
