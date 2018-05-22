@@ -100,9 +100,24 @@ div#gameBoard {
   font-size: 2em;
 }
 #playerStatus {
-  width: 50%;
+  text-align: center;
+  position: relative;
+  width: 80%;
   padding: 10px;
-  height: 85px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+}
+h2#votes {
+  position: relative;
+ font-size: 65px;
+ top: 5%;
+ text-shadow: 2px 2px 5px black;
+}
+h2#vps {
+  font-size: 20px;
+  position: relative;
+  top: 10%;
 }
 div#landingArea {
   width: 100%;
@@ -174,10 +189,10 @@ div#landingArea {
 }
 div#rosta {
   width: 90%;
-  height: 215px;
-  min-height: 240px;
+  height: 26%;
+  min-height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
@@ -185,6 +200,8 @@ div#rosta {
 	transform: scale(0.8);
 	animation: boingDown 200ms linear 1;
   overflow: visible;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingDown {
 	0% {transform: scale(0.9)}
@@ -194,15 +211,18 @@ div#rosta {
 }
 div#rosta2 {
   width: 90%;
-  height: 215px;
+  height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 5%;
 	transform: scale(0.9);
 	animation: boingUp 200ms linear 1;
+  background-size: 100% 100%;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingUp {
 	0% {transform: scale(0.8)}
@@ -212,15 +232,18 @@ div#rosta2 {
 }
 div#rostaHover {
   width: 90%;
-  height: 215px;
+  height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 5%;
 	animation: boingHover 500ms ease-in-out 1;
 	transform: scale(0.9);
+  background-size: 100% 100%;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingHover {
 	0% {transform: scale(1)}
@@ -230,20 +253,22 @@ div#rostaHover {
 }
 div#rostaAv {
   width: 90%;
-  height: 220px;
+  height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 5%;
-	animation: boingAv 500ms ease-in-out 1;
+	animation: boingAv 800ms ease-in-out 1;
 	transform: scale(1);
+  background-size: 100% 100%;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingAv {
 	0% {transform: scale(0.9)}
-	60% {transform: scale(0.95)}
-	80% {transform: scale(1.05)}
+	/*/60% {transform: scale(0.95)}
+	80% {transform: scale(0.98)}/*/
 	100% {transform: scale(1)}
 }
 
@@ -700,9 +725,4 @@ div#stats {
   position: relative;
   font-size: 52px;
   top: 30%;
-}
-
-/*/Votes h2/*/
-h2#votes {
-
 }
