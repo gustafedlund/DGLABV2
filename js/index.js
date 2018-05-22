@@ -1137,7 +1137,50 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 
 var legendaryHero = //Array med SECRET HEROES OMFG (som objekt)
 [
-
+	Gudrun =
+	{
+		name: "Gudrun Schyman",
+		quantity: 0,
+		cost: 10
+		descr: "Gudrun bränner ALLA dina pengar... Men dubblar också dina röster!",
+		load: function() {
+			if (tokenAmount >= this.cost && this.quantity == 0) {
+				tokenAmount-=this.cost;
+				this.quantity++;
+				coinAmount = 0;
+				votes = votes*2;
+			}
+		},
+	},
+	Palme =
+	{
+		name: "Olof Palme",
+		quantity: 0,
+		cost: 10,
+		descr: "Palme kan snacka, han. Ger 100 extra retorikpoäng!",
+		load: function() {
+			if (tokenAmount >= this.cost && this.quantity == 0) {
+				tokenAmount-=this.cost;
+				this.quantity++;
+				talentTree.retorik += 100;
+			}
+		},
+	},
+	Kungen =
+	{
+		name: "Kung XVI Gustaf",
+		quantity: 0,
+		cost: 20,
+		descr: "Instant win! Har du kungen på din sida, då jävlar..!",
+		load: function() {
+			if (tokenAmount >= this.cost && this.quantity == 0) {
+				tokenAmount-=this.cost;
+				this.quantity++;
+				endGame.winframe();
+				clearInterval(loopInterval);
+			}
+		},
+	}
 ];
 
 var quest = [
@@ -1268,7 +1311,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Kvantitet > Kvalitet",
     description: "Varje klick genererar 1 extra röst för varje ägda karaktär",
-    cost: 250,
+    cost: 2500,
 		valuta: "SEK",
     //image:
     unlocked: false,
@@ -1290,7 +1333,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster Galore",
     description: "Ökar dina röster/s med 20%!",
-    cost: 1000,
+    cost: 7500,
 		valuta: "R",
     //image:
     unlocked: false,
@@ -1312,7 +1355,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster GALORE!",
     description: "Ökar dina röster/s med 35%!",
-    cost: 5000,
+    cost: 25000,
 		valuta: "R",
     //image:
     unlocked: false,
@@ -1400,7 +1443,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Krona på Steroider",
 		description: "Värdet på mynt dubbleras, ytterligare en gång!",
-		cost: 5000,
+		cost: 3000,
 		valuta: "SEK",
 		//image:
 		unlocked: false,
@@ -1444,7 +1487,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Hyperinflation",
 		description: "Ökar chansen att få ett mynt.",
-		cost: 1000,
+		cost: 1750,
 		valuta: "R",
 		//image:
 		unlocked: false,
