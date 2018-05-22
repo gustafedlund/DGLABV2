@@ -378,11 +378,8 @@ function refresh() //Värden, element och dylikt som behöver frekvent uppdateri
 	refreshSpecs();
 	showProgress();
 	endGame.check();
-<<<<<<< HEAD
 	refreshStats();
-=======
 	statistics.playtime();
->>>>>>> 84037617cf214aed3667f31a3172bc47e27de259
 }
 
 function claimVote() //Klicka på kakan för att få poäng
@@ -773,21 +770,16 @@ function removeToken() {
 	 playtime: function()
 	 {
 		 var playtime = (new Date() - startTime)/1000;
+		 document.getElementById("timePlayed").innerText = playtime.toFixed(0) + "s";
 	 }
 };
-
-<<<<<<< HEAD
 function refreshStats() {
-	document.getElementById("timePlayed").innerText = " " + statistics.timePlayed;
 	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
 	document.getElementById("totalVotes").innerText = statistics.totalVotes;
 	document.getElementById("totalMoney").innerText = statistics.totalMoney.toFixed(0);
 	document.getElementById("totalCoins").innerText = statistics.totalCoins;
-	document.getElementById("charactersOwned").innerText = statistics.charactersOwned;
+	document.getElementById("charactersOwned").innerText = document.getElementById("lineup").childNodes.length - 1;
 }
-
-=======
->>>>>>> 84037617cf214aed3667f31a3172bc47e27de259
 /*/Objekt
 ----------------
 --------------/*/
