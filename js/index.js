@@ -753,7 +753,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
     name: "Ebba Busch Thor",
 		party: "KD",
     quantity: 0,
-    cost: 10,
+    cost: 25,
     vps: 1,
     accumvps: 0,
     lockedImage: "url('./img-alliansen/ebba-locked.png')",
@@ -768,7 +768,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         votes-=this.cost;
         this.quantity++;
         vps.vpsValue += this.vps;
-        this.cost = Math.ceil(this.cost*1.25);
+        this.cost = Math.ceil(this.cost*1.10)
         this.accumvps += this.vps; //Accumulated votes per sec for this char
         document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -782,7 +782,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 		name: "Jan Björklund",
 		party: "L",
     quantity: 0,
-    cost: 100,
+    cost: 175,
     vps: 10,
     accumvps: 0,
     lockedImage: "url('./img-alliansen/jan-locked.png')",
@@ -797,7 +797,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         votes-=this.cost;
         this.quantity++;
         vps.vpsValue += this.vps;
-        this.cost = Math.ceil(this.cost*1.25);
+        this.cost = Math.ceil(this.cost*1.10)
         this.accumvps += this.vps; //Accumulated votes per sec for this char
         document.getElementById("cost " + this.name).innerHTML = "kostnad: " +  this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -811,8 +811,8 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 		name: "Annie Lööf",
 		party: "C",
 		quantity: 0,
-		cost: 1000,
-		vps: 80,
+		cost: 850,
+		vps: 60,
 		accumvps: 0,
 		lockedImage: "url('./img-alliansen/annie-locked.png')",
 		image: "url('./img-alliansen/annie.png')",
@@ -826,7 +826,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				votes-=this.cost;
 				this.quantity++;
 				vps.vpsValue += this.vps;
-				this.cost = Math.ceil(this.cost*1.25);
+				this.cost = Math.ceil(this.cost*1.10)
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
 				document.getElementById("cost " + this.name).innerHTML = "kostnad: " +  this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -855,7 +855,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				votes-=this.cost;
 				this.quantity++;
 				vps.vpsValue += this.vps;
-				this.cost = Math.ceil(this.cost*1.25);
+				this.cost = Math.ceil(this.cost*1.10)
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
 				document.getElementById("cost " + this.name).innerHTML = "kostnad: " +  this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -872,7 +872,7 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
     name: "Jonas Sjöstedt",
 		party: "V",
     quantity: 0,
-    cost: 10,
+    cost: 25,
     vps: 1,
     accumvps: 0,
     lockedImage: "url('./img-rodgron/jonas-locked.png')",
@@ -887,7 +887,7 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         votes-=this.cost;
         this.quantity++;
         vps.vpsValue += this.vps;
-        this.cost = Math.ceil(this.cost*1.25);
+        this.cost = Math.ceil(this.cost*1.10)
         this.accumvps += this.vps; //Accumulated votes per sec for this char
         document.getElementById("cost " + this.name).innerHTML =  "kostnad: " +  this.cost + "R ";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -901,7 +901,7 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 		name: "Gustav Fridolin",
 		party: "MP",
     quantity: 0,
-    cost: 100,
+    cost: 175,
     vps: 10,
     accumvps: 0,
     lockedImage: "url('./img-rodgron/gustav-locked.png')",
@@ -916,7 +916,7 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         votes-=this.cost;
         this.quantity++;
         vps.vpsValue += this.vps;
-        this.cost = Math.ceil(this.cost*1.25);
+        this.cost = Math.ceil(this.cost*1.10)
         this.accumvps += this.vps; //Accumulated votes per sec for this char
         document.getElementById("cost " + this.name).innerHTML = "kostnad: " + this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -930,8 +930,8 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 		name: "Isabella Lövin",
 		party: "MP",
 		quantity: 0,
-		cost: 1000,
-		vps: 80,
+		cost: 850,
+		vps: 60,
 		accumvps: 0,
 		lockedImage: "url('./img-rodgron/isabella-locked.png')",
 		image: "url('./img-rodgron/isabella.png')",
@@ -945,7 +945,7 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				votes-=this.cost;
 				this.quantity++;
 				vps.vpsValue += this.vps;
-				this.cost = Math.ceil(this.cost*1.25);
+				this.cost = Math.ceil(this.cost*1.10)
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
 				document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -974,7 +974,7 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				votes-=this.cost;
 				this.quantity++;
 				vps.vpsValue += this.vps;
-				this.cost = Math.ceil(this.cost*1.25);
+				this.cost = Math.ceil(this.cost*1.10)
 				this.accumvps += this.vps; //Accumulated votes per sec for this char
 				document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -1008,7 +1008,7 @@ var quest = [
 					this.quantity++;
 					++statistics.charactersOwned;
 					vpsValue += this.vps;
-					this.cost = Math.ceil(this.cost*1.25);
+					this.cost = Math.ceil(this.cost*1.10)
 					this.accumvps += this.vps; //Accumulated votes per sec for this char
 					document.getElementById("cost " + this.name).innerHTML = "kostnad: " + this.cost + "R";
 					document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
@@ -1140,7 +1140,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster Galore",
     description: "Ökar dina röster/s med 20%!",
-    cost: 500,
+    cost: 1000,
 		valuta: "R",
     //image:
     unlocked: false,
