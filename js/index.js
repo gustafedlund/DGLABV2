@@ -130,6 +130,7 @@ function showProgress() {
 	document.getElementById("computerSim").style.width = botVotes * (50/3500000) + "%";
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (botVotes.toFixed(0).toString().length < 6) {
+			document.getElementById("botvotes").innerText= "";
 			document.getElementById("botLess").innerText = botVotes.toFixed(0);
 				if (Alliansen == true) {
 					document.getElementById("botLess").setAttribute("style", "color: #d22d2d;");
@@ -1496,7 +1497,6 @@ var adaptLogic = 1;
 var botVpsMultiplier = 1;
 var botVps = botVpsMultiplier*(flatValue + incrValue) * adaptLogic;
 
-var botVotesHTML = document.getElementById("botvotes");
 
 
 function botIncrement()
@@ -1506,7 +1506,6 @@ function botIncrement()
 	botIncrValue();
 	adaptLogics();
 	botUpgrades();
-	botVotesHTML.innerHTML = botVotes.toFixed(0);
 
 
 }
