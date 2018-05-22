@@ -33,6 +33,7 @@ function valjAl() {
 	document.getElementById("cover").style.display = "none";
 	Alliansen = true;
 	char = teamBlue;
+	loopInterval = setInterval(gameloop, 33);
 	farger();
 	gameLoad();
 	endGame.timeStart();
@@ -42,6 +43,7 @@ function valjRg() {
 	document.getElementById("cover").style.display = "none";
 	RödGröna = true;
 	char = teamRed;
+	loopInterval = setInterval(gameloop, 33);
 	farger();
 	gameLoad();
 	endGame.timeStart();
@@ -128,6 +130,7 @@ function showProgress() {
 	document.getElementById("computerSim").style.width = botVotes * (50/3500000) + "%";
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (botVotes.toFixed(0).toString().length < 6) {
+			document.getElementById("botvotes").innerText= "";
 			document.getElementById("botLess").innerText = botVotes.toFixed(0);
 				if (Alliansen == true) {
 					document.getElementById("botLess").setAttribute("style", "color: #d22d2d;");
@@ -369,7 +372,7 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 function refresh() //Värden, element och dylikt som behöver frekvent uppdatering
 {
 	playerVotes.innerHTML = votes.toFixed(0);
-	counter.innerHTML = coinAmount.toFixed(1) + " SEK";
+	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
 	document.getElementById("vps").innerHTML = "per sekund: " + vps.votesPerSec.toFixed(0);
 	tokenConvert.tokenDOM.innerHTML = tokenAmount;
 
@@ -413,7 +416,7 @@ function gameloop()
 
 	statistics.getValues(); //Update statistics
 }
-var loopInterval = setInterval(gameloop, 33);
+
 
 //unlock characters
 function unlockCharacter(i) { //Låser upp karaktärer i spelet
@@ -931,6 +934,7 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 		accumvps: 0,
 		lockedImage: "url('./img-misc/jimmie-locked.png')",
 		image: "url('./img-misc/jimmie.png')",
+		jimmiepopup: 0,
 		unlocked: false,
 		unlock: function() {
 			this.unlocked = true;
@@ -1493,7 +1497,6 @@ var adaptLogic = 1;
 var botVpsMultiplier = 1;
 var botVps = botVpsMultiplier*(flatValue + incrValue) * adaptLogic;
 
-var botVotesHTML = document.getElementById("botvotes");
 
 
 function botIncrement()
@@ -1503,7 +1506,6 @@ function botIncrement()
 	botIncrValue();
 	adaptLogics();
 	botUpgrades();
-	botVotesHTML.innerHTML = botVotes.toFixed(0);
 
 
 }
