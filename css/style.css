@@ -798,9 +798,3 @@ div#stats {
   font-size: 52px;
   top: 30%;
 }
-
-audio {
-  float:right;
-  display: block;
-  width:100%;
-}

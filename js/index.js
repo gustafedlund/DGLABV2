@@ -386,7 +386,7 @@ function claimVote() //Klicka på kakan för att få poäng
 {
   votes+=click.votesPerClick;
 	statistics.totalVotes += click.votesPerClick;
-	++statistics.totalClicks;
+	++statistics.totalClicks.toFixed(0);
 	coinRng = Math.floor(Math.random()*20);
 	coinRngSetting = 19;
 	if (coinRng >= coinRngSetting)
@@ -566,7 +566,7 @@ function lookForNewUpgrade(i)
 
 //spawn coins
 
-var positionsY = [0, 50, 100, 150, 200, 450, 500, 550, 600, 650];	//All possible x & y coordinates
+var positionsY = [0, 50, 100, 150, 200, 250, 500, 550, 600, 650];	//All possible x & y coordinates
 var positionsX = [0, 50, 100, 150, 200, 250, 300];
 
 var container = document.getElementById("landingArea");
@@ -656,8 +656,8 @@ function moveCoin(xPos, yPos) {
 		    		y = y - 4;
 		    	} else if (yPos == 200) {
 		    		y = y - 3;
-					} else if (yPos == 450) {
-		    		y = y + 2;
+					} else if (yPos == 250) {
+						y = y - 2;
 		    	} else if (yPos == 500) {
 		    		y = y + 3;
 		    	} else if (yPos == 550) {
