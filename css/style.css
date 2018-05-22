@@ -132,21 +132,25 @@ div#landingArea {
 	100% {opacity: 0;}
 }
 #legendToken {
-  width: 50px;
-	height: 50px;
+  width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	position: absolute;
 	opacity: 1;
-	background-color: #CCC;
+	background-image: url("../img-misc/legendtoken.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
 	animation: pulse 5s ease-out 5;
 }
 #legendToken2 {
-	width: 50px;
-	height: 50px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	position: absolute;
 	opacity: 1;
-	background-color: #CCC;
+  background-image: url("../img-misc/legendtoken.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
 	animation: blink 10s forwards;
 }
 @keyframes pulse {
@@ -170,7 +174,6 @@ div#rosta {
 	animation: boingDown 200ms linear 1;
   overflow: visible;
 }
-
 @keyframes boingDown {
 	0% {transform: scale(0.9)}
 	80% {transform: scale(0.75)}
@@ -527,7 +530,55 @@ p.createCost, p.upgradeCostText {
 div#legender {
   display: none;
 }
-
+div.legend {
+  width: 95%;
+  margin: 2.5%;
+  height: 200px;
+  color: #fff;
+  border-style: dashed;
+  border-width: 5px;
+  padding: 5px 10px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+div.legend:hover {
+  box-shadow: 0px 0px 50px inset #fff;
+}
+#gudrun {
+  background-image: url("../img-misc/gudrun-01.png");
+}
+#palme {
+  background-image: url("../img-misc/palme-01.png");
+}
+#kungen {
+  background-image: url("../img-misc/kungen-01.png");
+}
+.legName {
+  font-size: 50px;
+}
+#palme .legName {
+  text-align: right;
+}
+.legend p {
+  width: 70%;
+  font-size: 15px;
+}
+#palme p {
+  text-align: right;
+  float: right;
+}
+.legCost {
+  font-size: 60px;
+}
+#palme .legCost {
+  clear: both;
+  float: right;
+}
+div#trade4token {
+  width: 100%;
+  height: 50px;
+}
 div#stats {
   margin-top: 5px;
   height: 20%;
