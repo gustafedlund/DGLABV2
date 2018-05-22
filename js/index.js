@@ -115,6 +115,7 @@ function showProgress() {
 	document.getElementById("player").style.width = votes * (50/3500000) + "%";
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (votes.toFixed(0).toString().length < 6) {
+			document.getElementById("playervotes").innerText = "";
 			document.getElementById("playerLess").innerText = votes.toFixed(0);
 				if (Alliansen == true) {
 					document.getElementById("playerLess").setAttribute("style", "color: #2B85EC;");
@@ -413,8 +414,7 @@ function gameloop()
   {
     lookForNewUpgrade(j);
   }
-
-	statistics.getValues(); //Update statistics
+statistics.getValues();
 }
 
 
@@ -434,7 +434,8 @@ function unlockCharacter(i) { //Låser upp karaktärer i spelet
     var divId = "frame " + char.name;
     var quantityId = "quantity " + char.name; //Skapa string till unikt id på elementet med kvantiteten
     var costId = "cost " + char.name; // --||--
-    var nameId = "name " + char.name;
+		var vpsId = "vps " + char.name;
+		var nameId = "name " + char.name;
     var onclickLoad = "teamRed["+i+"].load()";
   }
 	//skapa en div i vilken karaktären ska visas
@@ -778,7 +779,6 @@ function removeToken() {
 };
 function refreshStats() {
 	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
-	document.getElementById("totalVotes").innerText = statistics.totalVotes.toFixed(0);
 	document.getElementById("totalMoney").innerText = statistics.totalMoney.toFixed(0);
 	document.getElementById("totalCoins").innerText = statistics.totalCoins;
 	document.getElementById("charactersOwned").innerText = document.getElementById("lineup").childNodes.length - 1;
@@ -1157,12 +1157,15 @@ var legendaryHero = //Array med SECRET HEROES OMFG (som objekt)
 		name: "Olof Palme",
 		quantity: 0,
 		cost: 10,
-		descr: "Palme kan snacka, han. Ger 100 extra retorikpoäng!",
+		descr: "Palme kan snacka, han. Ger 50 extra retorikpoäng!",
 		load: function() {
 			if (tokenAmount >= this.cost && this.quantity == 0) {
 				tokenAmount-=this.cost;
 				this.quantity++;
-				talentTree.retorik += 100;
+				for (var i = 0; i < 50; i++) {
+					talentTree.retorik++;
+					click.talentClickMultiplier *= 1.15;
+				}
 			}
 		},
 	},
