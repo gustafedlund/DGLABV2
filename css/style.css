@@ -107,8 +107,8 @@ div#pagecage {
   min-width: 1100px;
   max-height: 830px;
   min-height: 650px;
+  position: relative;
 }
-
 div#progress {
   width: 100%;
   height: 30px;
@@ -384,7 +384,7 @@ span.explain {
   height: 40px;
   background-color: #fff;
   display: inline-block;
-  position: fixed;
+  position: relative;
   right: 52%;
   overflow: visible;
   padding: 0px 20px;
@@ -428,20 +428,20 @@ div#messageArea {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom;
-  width: 20%;
-  height: 27%;
-  position: fixed;
-  bottom: 5px;
-  left: 30.5%;
+  width: 60%;
+  height: 32%;
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
   font-size: 24px;
   display: none;
-  padding: 30px;
+  padding: 8%;
 }
 div#messageArea .closeMessage {
-  position: fixed;
-  left: 48%;
-  bottom: 22%;
-  font-size: 30px;
+  position: relative;
+  left: 96%;
+  bottom: 160px;
+  font-size: 50px;
   line-height: 34px;
   -webkit-transform:scale(1.3,1.0);
   -moz-transform:scale(1.3, 1.0);
