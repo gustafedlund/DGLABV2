@@ -414,8 +414,7 @@ function gameloop()
   {
     lookForNewUpgrade(j);
   }
-
-	statistics.getValues(); //Update statistics
+statistics.getValues();
 }
 
 
@@ -780,7 +779,6 @@ function removeToken() {
 };
 function refreshStats() {
 	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
-	document.getElementById("totalVotes").innerText = statistics.totalVotes.toFixed(0);
 	document.getElementById("totalMoney").innerText = statistics.totalMoney.toFixed(0);
 	document.getElementById("totalCoins").innerText = statistics.totalCoins;
 	document.getElementById("charactersOwned").innerText = document.getElementById("lineup").childNodes.length - 1;

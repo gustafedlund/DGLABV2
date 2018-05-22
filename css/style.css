@@ -768,13 +768,14 @@ div#stats {
 }
 
 #windiv {
-  background-color: red;
+  background-color: black;
   text-align: center;
   position: fixed;
   right: 25%;
   top: 20%;
   height: 450px;
   width: 50%;
+  color: white;
 }
 #highscorename {
   width: 35%;
