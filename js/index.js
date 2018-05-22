@@ -536,7 +536,8 @@ function lookForNewUpgrade(i)
 
 //spawn coins
 
-var positions = [0, 50, 100, 150, 200, 300, 400, 450, 500, 550, 600];	//All possible x & y coordinates
+var positionsY = [50, 150, 250, 350, 450];	//All possible x & y coordinates
+var positionsX = [0, 100, 200, 300];
 
 var container = document.getElementById("landingArea");
 var counter = document.getElementById("counter");
@@ -566,23 +567,22 @@ function spawnCoin() {
 
 
 function generatePosition(isToken) {
-	var arrX = Math.floor(Math.random()*positions.length);	//Pick a random coordinate from the array
-	var arrY = Math.floor(Math.random()*positions.length);
+	var arrX = Math.floor(Math.random()*positionsX.length);	//Pick a random coordinate from the array
+	var arrY = Math.floor(Math.random()*positionsY.length);
 
-	var xPos = positions[arrX];	//These positions are where the coin will end up
-	var yPos = positions[arrY];
+	var xPos = positionsX[arrX];	//These positions are where the coin will end up
+	var yPos = positionsY[arrY];
 
 	if (isToken == true) {
 		showLegendToken(xPos, yPos);
 	} else {
 		moveCoin(xPos, yPos);
 	}
-
 }
 
 function moveCoin(xPos, yPos) {
-	var x = 300;	//Coin start coordinates
-	var y = 300;
+	x = 200;	//Coin start coordinates
+	y = 350;
 
  	var moveAnimation = setInterval(frame, 1);	//Call the function frame every 20ms
  	function frame() {
@@ -590,11 +590,30 @@ function moveCoin(xPos, yPos) {
 	    if (x == xPos && y == yPos) {	//When both x & y position is met, stop the animation
 	      	clearInterval(moveAnimation);
 
-	    } else if (xPos == 300 && yPos == 300) {	//If x & y is starting the starting coordinates, generate new ones
+	    } else if (xPos == 200 && yPos == 350) {	//If x & y is starting the starting coordinates, generate new ones
 	    	generatePosition();
 	    } else {
 
-			if (x == xPos) {
+				if (x == xPos) {
+					x = xPos;
+				} else {
+					if (xPos == 0) {
+							x = x - 2.5;
+						} else if (xPos == 50) {
+							x = x - 2;
+						} else if (xPos == 100) {
+							x = x - 1.5;
+						} else if (xPos == 150) {
+							x--;
+						} else if (xPos == 250) {
+							x++;
+						} else if (xPos == 300) {
+							x = x + 1.5;
+						} else if (xPos == 350) {
+							x = x + 2;
+						}
+				}
+			/*if (x == xPos) {
 				x = xPos;
 			} else {
 				if (xPos == 0) {
@@ -615,35 +634,37 @@ function moveCoin(xPos, yPos) {
 		    		x = x + 2;
 		    	} else if (xPos == 550) {
 		    		x = x + 2.5;
-		    	} /*else if (xPos == 600) {
+		    	} else if (xPos == 600) {
 		    		x = x + 3;
-		    	}*/
-			}
+		    	}
+			}*/
 
 			if (y == yPos) {
 				y = yPos;
 			} else {
 				if (yPos == 0) {
-	    			y = y - 3;
+	    			y = y - 4;
 		    	} else if (yPos == 50) {
-		    		y = y - 2.5;
+		    		y = y - 3.5;
 		    	} else if (yPos == 100) {
-		    		y = y - 2;
+		    		y = y - 3;
 		    	} else if (yPos == 150) {
-		    		y = y - 1.5;
+		    		y = y - 2.5;
 		    	} else if (yPos == 200) {
-		    		y--;
-		    	} else if (yPos == 400) {
-		    		y++;
+		    		y = y - 2;
+					} else if (yPos == 250) {
+					 	y = y - 1.5;
+					} else if (yPos == 300) {
+						y--;
+					} else if (yPos == 400) {
+						y++;
 		    	} else if (yPos == 450) {
 		    		y = y + 1.5;
 		    	} else if (yPos == 500) {
 		    		y = y + 2;
 		    	} else if (yPos == 550) {
 		    		y = y + 2.5;
-		    	} /*else if (yPos == 600) {
-		    		y = y + 3;
-		    	}*/
+		    	}
 			}
 
 			var whatCoin = coin.id;
