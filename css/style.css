@@ -121,7 +121,12 @@ h2#vps {
 }
 h2#counter {
   position: relative;
+
 }
+/*/h2#counter::after {
+  content: url("../img-misc/SEK-guld.png");
+
+}/*/
 div#landingArea {
   width: 100%;
   height: 715px;
