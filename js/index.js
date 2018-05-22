@@ -389,7 +389,7 @@ function gameloop()
     lookForNewUpgrade(j);
   }
 }
-setInterval(gameloop, 33);
+var loopInterval = setInterval(gameloop, 33);
 
 //unlock characters
 function unlockCharacter(i) { //Låser upp karaktärer i spelet
@@ -1489,10 +1489,11 @@ var endGame =
 	},
 	check: function() //Kollar efter vinst
 	{
-		if (votes === this.majoritet+1)
+		if (votes > this.majoritet)
 		{
 			this.timeEnd();
 			this.winframe();
+			clearInterval(loopInterval);
 		}
 	},
 	winframe: function() //Skapar gratulationsruta + name/score submission
