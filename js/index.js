@@ -380,6 +380,8 @@ function refresh() //Värden, element och dylikt som behöver frekvent uppdateri
 function claimVote() //Klicka på kakan för att få poäng
 {
   votes+=click.votesPerClick;
+	statistics.totalVotes += click.votesPerClick;
+	++statistics.totalClicks;
 	coinRng = Math.floor(Math.random()*20);
 	coinRngSetting = 19;
 	if (coinRng >= coinRngSetting)
@@ -403,6 +405,8 @@ function gameloop()
   {
     lookForNewUpgrade(j);
   }
+
+	statistics.getValues(); //Updates statistics
 }
 var loopInterval = setInterval(gameloop, 33);
 
@@ -566,38 +570,38 @@ var coinID = 0;
 var coinCounter = 0;
 
 function spawnCoin() {
-	var isToken = false;
+	var isToken = false; //This is a coin
 	coin = document.createElement("div");	//Create coin, give it class and put it in container
 	coin.className = "coin";
 	coin.setAttribute("id", coinID);
 	container.appendChild(coin);
-	coinID++;
+	coinID++; //Next coin spawned will have a higher ID
 
 	var whatCoin = coin.id
-	var coinDOM = document.getElementById(whatCoin);
-	coinDOM.addEventListener("mouseover", function() {
-		var trash = container.removeChild(coinDOM);	//Remove coin and increase counter
-		++statistics.coinsCollected;
-		randomMoney(coinValue);
-		clearTimeout(preventRemove);
+	var coinDOM = document.getElementById(whatCoin); //Retrieves ID from coins and puts them in coinDOM
+	coinDOM.addEventListener("mouseover", function() { //Adds a mouseover event listener to pick up coins
+		var trash = container.removeChild(coinDOM);	//Remove coin
+		++statistics.totalCoins; //Increase coin counter
+		randomMoney(coinValue); //Retrives the value of the coin
+		clearTimeout(preventRemove); //Prevents the coin from deleting again after some time if you pick it up
 	} );
 
-	var preventRemove = setTimeout(removeCoin, 20000, coinDOM);
+	var preventRemove = setTimeout(removeCoin, 20000, coinDOM); //Timer for coin to disapear
 	generatePosition(isToken);
 }
 
 
 function generatePosition(isToken) {
-	var arrX = Math.floor(Math.random()*positionsX.length);	//Pick a random coordinate from the array
+	var arrX = Math.floor(Math.random()*positionsX.length);	//Pick a random coordinate from the arrays
 	var arrY = Math.floor(Math.random()*positionsY.length);
 
 	var xPos = positionsX[arrX];	//These positions are where the coin will end up
 	var yPos = positionsY[arrY];
 
-	if (isToken == true) {
-		showLegendToken(xPos, yPos);
-	} else {
-		moveCoin(xPos, yPos);
+	if (isToken == true) { //If it is a token
+		showLegendToken(xPos, yPos); //Run function to show token
+	} else { //If it is a coin
+		moveCoin(xPos, yPos); //Run function to animate coin movement
 	}
 }
 
@@ -605,20 +609,21 @@ function moveCoin(xPos, yPos) {
 	var x = 200;	//Coin start coordinates
 	var y = 350;
 
- 	var moveAnimation = setInterval(frame, 1);	//Call the function frame every 20ms
+ 	var moveAnimation = setInterval(frame, 1);	//Call the function frame every 1ms
  	function frame() {
 
-	    if (x == xPos && y == yPos) {	//When both x & y position is met, stop the animation
+	    if (x == xPos && y == yPos) {	//When both x & y position are met, stop the animation
 	      	clearInterval(moveAnimation);
 
-	    } else if (xPos == 200 && yPos == 350) {	//If x & y is starting the starting coordinates, generate new ones
-	    	generatePosition();
+	    } else if (xPos == 200 && yPos == 350) {	//If x & y is going to the starting coordinates, generate new ones
+				isToken = false;
+				generatePosition(isToken);
 	    } else {
 
-				if (x == xPos) {
-					x = xPos;
+				if (x == xPos) { //The x axis
+					x = xPos; //When x meet its position stop increasing x value
 				} else {
-					if (xPos == 0) {
+					if (xPos == 0) { //Coin moves different amounts depending on what coordinate it got
 							x = x - 4;
 						} else if (xPos == 50) {
 							x = x - 3;
@@ -633,7 +638,7 @@ function moveCoin(xPos, yPos) {
 						}
 				}
 
-			if (y == yPos) {
+			if (y == yPos) { //The y axix, works the same way
 				y = yPos;
 			} else {
 				if (yPos == 0) {
@@ -660,18 +665,18 @@ function moveCoin(xPos, yPos) {
 			}
 
 			var whatCoin = coin.id;
-			var coinDOM = document.getElementById(whatCoin);
-			coinDOM.style.top = y + 'px';
+			var coinDOM = document.getElementById(whatCoin); //Get the moving coins ID
+			coinDOM.style.top = y + 'px'; //Style top and left every frame to create movement
 			coinDOM.style.left = x + 'px';
 			}
   	}
 }
 
 function removeCoin(coinDOM) {
-		var trash = container.removeChild(coinDOM);
+		var trash = container.removeChild(coinDOM); //Removes coin
 }
 
-function reasonableCoinSpawn()
+function reasonableCoinSpawn() //Prevents too many coins spawning at once
 {
 		if (coinRng >= coinRngSetting && recentCoinSpawn === false)
 		{
@@ -681,15 +686,15 @@ function reasonableCoinSpawn()
 		}
 		return;
 	}
-function setRecentSpawnFalse()
+function setRecentSpawnFalse() //If called, a coin has not spawned recently
 {
 		recentCoinSpawn = false;
 	}
-function randomMoney(coinValue) //RNG Logic to coins.
+function randomMoney(coinValue) //RNG Logic to coins to give them different values
 {
 		var rollOne = Math.floor(Math.random()*11);
 		var rollTwo = Math.floor(Math.random()*11);
-	var coinAmountTemp = 0;
+		var coinAmountTemp = 0;
 
 		if (rollOne >= 7)
 		{
@@ -705,55 +710,59 @@ function randomMoney(coinValue) //RNG Logic to coins.
 	}
 
 var randomSpawn = Math.floor(Math.random() * 300000) + 180000;
-var tokenTimer = setInterval(spawnLegendToken, randomSpawn);
+var tokenTimer = setInterval(spawnLegendToken, randomSpawn); //Tells a Legend Token to spawn every 3-5 mins
 
 function spawnLegendToken() {
-	var isToken = true;
+	var isToken = true; //This is a token
 	token = document.createElement("div");
 	token.setAttribute("id", "legendToken");
 	container.appendChild(token);
 
-	token.addEventListener("mouseover", function() {
+	token.addEventListener("mouseover", function() { //Event listener to pick up token
 		var trash = container.removeChild(token);
 		++tokenAmount;
 		++statistics.totalLegendTokens;
-		clearTimeout(preventDelete);
+		clearTimeout(preventDelete); //Prevents token from being deleted after a while since it is already picked up
 	});
 
-	randomSpawn = Math.floor(Math.random() * 300000) + 180000;
+	randomSpawn = Math.floor(Math.random() * 300000) + 180000; //New time for token to spawn
 	preventDelete = setTimeout(blinkToken, 30000);
 	generatePosition(isToken);
 }
 
-function showLegendToken(xPos, yPos) {
+function showLegendToken(xPos, yPos) { //Puts the token where it should be
 	token.style.top = yPos + 'px';
 	token.style.left = xPos + 'px';
 }
 
-function blinkToken() {
+function blinkToken() { //Token starts blinking before it disapears
 	token.setAttribute("id", "legendToken2");
 	preventDelete = setTimeout(removeToken, 10000);
 }
 
 function removeToken() {
-	var trash = container.removeChild(token);
+	var trash = container.removeChild(token); //Remove token
 }
 
 /*//Stats//*/
 
- statistics = {
+ statistics = { //Tracks a range of different stats
 	 totalVotes: 0, //done
 	 totalMoney: 0, //done
 	 totalClicks: 0, //done
+	 totalCoins: 0, //done
 	 totalLegendTokens: 0, //done
 	 votesPerClick: 0, //done
 	 votesPerSecond: 0, //done
-	 timePlayed: 0, //done
-	 upgradesOwned: 0, //done
-	 charactersOwned: 0, //done
-	 coinsCollected: 0, //done
-	 moneyValue: 0, //done
-	 votesPerSecondMultiplier: 0 //done
+	 timePlayed: 0,
+	 charactersOwned: 0,
+	 moneyValue: 0,
+	 votesPerSecondMultiplier: 0,
+	 getValues: function() {
+		 this.votesPerClick = click.votesPerClick;
+		 this.votesPerSecond = vps.votesPerSec;
+		 this.votesPerSecondMultiplier;
+	 }
 };
 
 /*/Objekt
