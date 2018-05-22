@@ -733,7 +733,7 @@ function spawnLegendToken() {
 		clearTimeout(preventDelete); //Prevents token from being deleted after a while since it is already picked up
 	});
 
-	randomSpawn = Math.floor(Math.random() * 300000) + 180000; //New time for token to spawn
+	randomSpawn = Math.floor(Math.random() * 120000) + 60000; //New time for token to spawn
 	preventDelete = setTimeout(blinkToken, 30000);
 	generatePosition(isToken);
 }
