@@ -363,6 +363,8 @@ function refresh() //Värden, element och dylikt som behöver frekvent uppdateri
 {
 	playerVotes.innerHTML = votes.toFixed(0) + " R";
 	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
+	tokenConvert.tokenDOM.innerHTML = tokenAmount;
+
   vps.vpsCalc();
 	click.clickCalc();
 	refreshSpecs();
@@ -546,12 +548,6 @@ function lookForNewUpgrade(i)
     unlockUpgrade(i);
     upgrades[i].unlock();
   }
-
-	if(Alliansen === true) {
-		createDiv.style.borderColor = "#EC922B";
-	} else {
-		createDiv.style.borderColor = "#2dd2d2";
-	}
 }
 
 //spawn coins
@@ -1582,4 +1578,20 @@ var endGame =
 		window.location.href = "hs.html";
 
 	},
+}
+
+/*/CONVERT SEK TO TOKENS/*/
+
+var tokenConvert =
+{
+	tokenCost: 2000,
+	tokenDOM: document.getElementById("currentAmount");
+	one: function()
+	{
+		if (coinAmount >= this.tokenCost)
+		{
+			coinAmount -= this.tokenCost;
+			tokenAmount++;
+		}
+	}
 }
