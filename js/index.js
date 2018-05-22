@@ -554,8 +554,8 @@ function lookForNewUpgrade(i)
 
 //spawn coins
 
-var positionsY = [0, 50, 100, 150, 200, 250, 450, 500, 550];	//All possible x & y coordinates
-var positionsX = [0, 50, 100, 150, 200, 250, 300, 350];
+var positionsY = [0, 50, 100, 150, 200, 450, 500, 550, 600, 650];	//All possible x & y coordinates
+var positionsX = [0, 50, 100, 150, 200, 250, 300];
 
 var container = document.getElementById("landingArea");
 var counter = document.getElementById("counter");
@@ -627,35 +627,8 @@ function moveCoin(xPos, yPos) {
 							x++;
 						} else if (xPos == 300) {
 							x = x + 2;
-						} else if (xPos == 350) {
-							x = x + 3;
 						}
 				}
-			/*if (x == xPos) {
-				x = xPos;
-			} else {
-				if (xPos == 0) {
-	    			x = x - 3;
-		    	} else if (xPos == 50) {
-		    		x = x - 2.5;
-		    	} else if (xPos == 100) {
-		    		x = x - 2;
-		    	} else if (xPos == 150) {
-		    		x = x - 1.5;
-		    	} else if (xPos == 200) {
-		    		x--;
-		    	} else if (xPos == 400) {
-		    		x++;
-		    	} else if (xPos == 450) {
-		    		x = x + 1.5;
-		    	} else if (xPos == 500) {
-		    		x = x + 2;
-		    	} else if (xPos == 550) {
-		    		x = x + 2.5;
-		    	} else if (xPos == 600) {
-		    		x = x + 3;
-		    	}
-			}*/
 
 			if (y == yPos) {
 				y = yPos;
@@ -670,18 +643,16 @@ function moveCoin(xPos, yPos) {
 		    		y = y - 4;
 		    	} else if (yPos == 200) {
 		    		y = y - 3;
-					} else if (yPos == 250) {
-					 	y = y - 2;
-					} else if (yPos == 300) {
-						y--;
-					} else if (yPos == 400) {
-						y++;
-		    	} else if (yPos == 450) {
+					} else if (yPos == 450) {
 		    		y = y + 2;
 		    	} else if (yPos == 500) {
 		    		y = y + 3;
 		    	} else if (yPos == 550) {
 		    		y = y + 4;
+		    	} else if (yPos == 600) {
+		    		y = y + 5;
+		    	} else if (yPos == 650) {
+		    		y = y + 6;
 		    	}
 			}
 
