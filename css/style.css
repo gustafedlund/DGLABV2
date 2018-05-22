@@ -798,72 +798,9 @@ div#stats {
   font-size: 52px;
   top: 30%;
 }
-/*click effect on envelope*/
-.clickImg {
-  width: 50px;
-  position: absolute;
-}
-.clickPlus {
-  width: 30px;
-  height: 30px;
-  font-size: 24px;
-  position: absolute;
-}
-.envelope1 {
-  animation-name: envelope1;
-}
-.envelope2 {
-  animation-name: envelope2;
-}
-.envelope1, .envelope2 {
-  animation-duration: 1.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-@keyframes envelope1 {
-  from {}
-  to {
-    -ms-transform: translate(50px, -100px); /* IE 9 */
-    -webkit-transform: translate(50px, -100px); /* Safari */
-    transform: translate(50px, -100px); /* Standard syntax */
-    opacity: 0;
-  }
-}
-@keyframes envelope2 {
-  from {}
-  to {
-    -ms-transform: translate(-50px, -100px); /* IE 9 */
-    -webkit-transform: translate(-50px, -100px); /* Safari */
-    transform: translate(-50px, -100px); /* Standard syntax */
-    opacity: 0;
-  }
-}
-.plus1 {
-  animation-name: plus1;
-}
-.plus2 {
-  animation-name: plus2;
-}
-.plus1, .plus2 {
-  animation-duration: 1.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-@keyframes plus1 {
-  from {}
-  to {
-    -ms-transform: translate(25px, -100px); /* IE 9 */
-    -webkit-transform: translate(25px, -100px); /* Safari */
-    transform: translate(25px, -100px); /* Standard syntax */
-    opacity: 0;
-  }
-}
-@keyframes plus2 {
-  from {}
-  to {
-    -ms-transform: translate(-25px, -100px); /* IE 9 */
-    -webkit-transform: translate(-25px, -100px); /* Safari */
-    transform: translate(-25px, -100px); /* Standard syntax */
-    opacity: 0;
-  }
+
+audio {
+  float:right;
+  display: block;
+  width:100%;
 }
