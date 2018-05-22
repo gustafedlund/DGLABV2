@@ -468,7 +468,7 @@ function lookForNewCharacter(i) //Skannar efter möjlighet att låsa upp nya sak
     var char = teamRed[i];
   }
   //Lås upp karaktären ifall en snart har råd (tillfällig låst bild)
-  if (votes >= char.cost/2 && char.unlocked === false)
+  if (votes >= char.cost/3 && char.unlocked === false)
   {
     unlockCharacter(i);
     char.unlock();
