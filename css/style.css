@@ -42,6 +42,19 @@ div#progress {
   padding: 2.5px;
   position: relative;
   overflow: visible;
+  display: flex;
+}
+#playerLess {
+  position: fixed;
+  top: 2.5px;
+  left: 10px;
+  font-size: 24px;
+}
+#botLess {
+  position: fixed;
+  top: 2.5px;
+  right: 10px;
+  font-size: 24px;
 }
 div#player {
   height: 25px;
