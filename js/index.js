@@ -1267,7 +1267,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Kvantitet > Kvalitet",
     description: "Varje klick genererar 1 extra röst för varje ägda karaktär",
-    cost: 250,
+    cost: 2500,
 		valuta: "SEK",
     //image:
     unlocked: false,
@@ -1289,7 +1289,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster Galore",
     description: "Ökar dina röster/s med 20%!",
-    cost: 1000,
+    cost: 7500,
 		valuta: "R",
     //image:
     unlocked: false,
@@ -1311,7 +1311,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
   {
     name: "Röster GALORE!",
     description: "Ökar dina röster/s med 35%!",
-    cost: 5000,
+    cost: 25000,
 		valuta: "R",
     //image:
     unlocked: false,
@@ -1399,7 +1399,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Krona på Steroider",
 		description: "Värdet på mynt dubbleras, ytterligare en gång!",
-		cost: 5000,
+		cost: 3000,
 		valuta: "SEK",
 		//image:
 		unlocked: false,
@@ -1443,7 +1443,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Hyperinflation",
 		description: "Ökar chansen att få ett mynt.",
-		cost: 1000,
+		cost: 1750,
 		valuta: "R",
 		//image:
 		unlocked: false,
