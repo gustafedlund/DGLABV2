@@ -155,7 +155,7 @@ h2#vps {
   top: 10%;
 }
 h2#counter {
-  position: relative;
+  position: absolute;
   font-size: 55px;
   left: 25%;
   bottom: 10%;
