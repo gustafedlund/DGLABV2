@@ -87,9 +87,24 @@ div#gameBoard {
   font-size: 2em;
 }
 #playerStatus {
-  width: 50%;
+  text-align: center;
+  position: relative;
+  width: 80%;
   padding: 10px;
-  height: 85px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+}
+h2#votes {
+  position: relative;
+ font-size: 65px;
+ top: 5%;
+ text-shadow: 2px 2px 5px black;
+}
+h2#vps {
+  font-size: 20px;
+  position: relative;
+  top: 10%;
 }
 div#landingArea {
   width: 100%;
@@ -652,9 +667,4 @@ div#stats {
   position: relative;
   font-size: 52px;
   top: 30%;
-}
-
-/*/Votes h2/*/
-h2#votes {
-
 }

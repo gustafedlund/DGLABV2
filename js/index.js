@@ -363,8 +363,9 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 
 function refresh() //Värden, element och dylikt som behöver frekvent uppdatering
 {
-	playerVotes.innerHTML = votes.toFixed(0) + " R";
-	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
+	playerVotes.innerHTML = votes.toFixed(0);
+	counter.innerHTML = coinAmount.toFixed(1) + " SEK";
+	document.getElementById("vps").innerHTML = "per sekund: " + vps.votesPerSec.toFixed(0);
 	tokenConvert.tokenDOM.innerHTML = tokenAmount;
 
   vps.vpsCalc();
