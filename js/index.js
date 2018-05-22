@@ -1141,7 +1141,7 @@ var legendaryHero = //Array med SECRET HEROES OMFG (som objekt)
 	{
 		name: "Gudrun Schyman",
 		quantity: 0,
-		cost: 10
+		cost: 10,
 		descr: "Gudrun bränner ALLA dina pengar... Men dubblar också dina röster!",
 		load: function() {
 			if (tokenAmount >= this.cost && this.quantity == 0) {
