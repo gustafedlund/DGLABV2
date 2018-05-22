@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,6 +23,9 @@
   </script>
 </head>
 <body>
+
+  <img id="moln" src="./img-landingpage/Moln-animation.gif" />
+
   <div id="hspage">
     <h1>Leaderboards</h1>
     <div id="ladder">
@@ -30,13 +34,35 @@
       <div id="time"></div>
     </div>
   </div>
+
 </body>
+
 <style>
+  * {
+    font-family: 'VT323', monospace;
+  }
+  body {
+    width: 100%;
+    height: 1000px;
+    background-color: #44D9E6;
+    background-image: url("./img-landingpage/green-bg.png");
+    background-position: bottom;
+    background-size: 105%;
+    background-repeat: no-repeat;
+    overflow:hidden;
+  }
+  #moln {
+    width: 100%;
+    position: fixed;
+    top: 20px;
+    left: 0px;
+  }
   #hspage {
     position: relative;
     width: 50%;
     height: auto;
     left: 25%;
+    top: 10%;
   }
   h1 {
     text-align: center;
@@ -52,9 +78,7 @@
   }
   p {
     font-size: 25px;
-
   }
-
   #pos {
     position: relative;
     height: auto;
@@ -62,7 +86,6 @@
     left: 2.5%;
     text-align: left;
     float: left;
-
   }
   #name {
     position: relative;
