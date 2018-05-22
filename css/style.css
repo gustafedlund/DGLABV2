@@ -643,7 +643,8 @@ div#uppgr {
 div.upgradeFrame {
   width: 95%;
   margin: 2.5%;
-  height: 100px;
+  height: auto;
+  min-height: 100px;
   color: #fff;
   border-style: solid;
   border-width: 3px;
@@ -730,8 +731,10 @@ div#trade4token {
   float: left;
   color: #fff;
 }
-#currentAmount::after {
-  content: "L";
+#trade4token img {
+  height: 35px;
+  margin-top: 3px;
+  margin-left: 5px;
 }
 #buyToken {
   width: 100px;
