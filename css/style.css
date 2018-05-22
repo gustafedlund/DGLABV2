@@ -101,7 +101,7 @@ div#gameBoard {
 }
 #playerStatus {
   text-align: center;
-  position: relative;
+  position: absolute;
   width: 80%;
   padding: 10px;
   height: 200px;
@@ -118,6 +118,9 @@ h2#vps {
   font-size: 20px;
   position: relative;
   top: 10%;
+}
+h2#counter {
+  position: relative;
 }
 div#landingArea {
   width: 100%;
