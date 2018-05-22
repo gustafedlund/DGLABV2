@@ -1587,7 +1587,7 @@ var endGame =
 var tokenConvert =
 {
 	tokenCost: 2000,
-	tokenDOM: document.getElementById("currentAmount");
+	tokenDOM: document.getElementById("currentAmount"),
 	one: function()
 	{
 		if (coinAmount >= this.tokenCost)
