@@ -13,7 +13,6 @@ ALLIANSEN:
   padding: 0;
   font-family: 'VT323', monospace;
   box-sizing: border-box;
-  overflow: hidden;
 }
 /*landing page - choose party*/
 #cover {
@@ -297,6 +296,7 @@ div#specs {
 }
 div#specs li {
   position: relative;
+  list-style-type: none;
 }
 span.explain {
   text-align: right;
@@ -305,15 +305,14 @@ span.explain {
   width: auto;
   height: 40px;
   background-color: #fff;
-  display: inline-block;
-  position: relative;
-  right: 52%;
-  overflow: visible;
+  position: absolute;
+  right: 103.5%;
   padding: 0px 20px;
   display: none;
+  white-space: nowrap;
 }
 div#specs li:first-child:hover #budgetExplain {
-  display: inline;
+  display: inline-block;
 }
 div#specs li:nth-child(2):hover #marketExplain {
   display: inline;
@@ -533,7 +532,7 @@ div#legender {
 div.legend {
   width: 95%;
   margin: 2.5%;
-  height: 27%;
+  height: 25%;
   color: #fff;
   border-style: dashed;
   border-width: 5px;
@@ -576,9 +575,12 @@ div.legend:hover {
   float: right;
 }
 div#trade4token {
-  width: 100%;
+  width: 30%;
   height: 50px;
   padding: 0 10px;
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
 }
 #currentAmount {
   font-size: 42px;
@@ -589,6 +591,8 @@ div#trade4token {
   content: "L";
 }
 #buyToken {
+  width: 100px;
+  text-align: center;
   float: right;
   border: none;
   border-radius: 0;
