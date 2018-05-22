@@ -236,6 +236,9 @@ function newMessage(message) {
 		function close() {
 			messageArea.style.display = "none";
 		}
+
+	setTimeout(close, 7000);
+
 	closeMessage.addEventListener("click", close);
 }
 
@@ -377,6 +380,7 @@ function refresh() //Värden, element och dylikt som behöver frekvent uppdateri
 	refreshSpecs();
 	showProgress();
 	endGame.check();
+	refreshStats();
 	statistics.playtime();
 }
 
@@ -768,9 +772,16 @@ function removeToken() {
 	 playtime: function()
 	 {
 		 var playtime = (new Date() - startTime)/1000;
+		 document.getElementById("timePlayed").innerText = playtime.toFixed(0) + "s";
 	 }
 };
-
+function refreshStats() {
+	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
+	document.getElementById("totalVotes").innerText = statistics.totalVotes;
+	document.getElementById("totalMoney").innerText = statistics.totalMoney.toFixed(0);
+	document.getElementById("totalCoins").innerText = statistics.totalCoins;
+	document.getElementById("charactersOwned").innerText = document.getElementById("lineup").childNodes.length - 1;
+}
 /*/Objekt
 ----------------
 --------------/*/

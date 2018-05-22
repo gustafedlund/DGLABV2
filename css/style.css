@@ -16,14 +16,51 @@ ALLIANSEN:
 }
 /*landing page - choose party*/
 #cover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
   width: 100%;
   height: 800px;
-  background-color: #cccccc;
-  padding: 15% 20%;
+  background-color: #44D9E6;
+  background-image: url("../img-landingpage/green-bg.png");
+  background-position: 0px 105%;
+  background-size: 105%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#moln {
+  width: 100%;
+  position: fixed;
+  top: 20px;
+  left: 0px;
+}
+#choose {
+  background-color: #fff;
+  width: 80%;
+  height: 60%;
+  color: #000;
+  text-align: center;
+  padding: 120px;
+  box-sizing: border-box;
+}
+#choose h2 {
+  font-size: 60px;
+}
+#choose p {
+  font-size: 40px;
+  display: inline;
+  margin: 100px;
+}
+#chooseA {
+  float: left;
+}
+#chooseA:hover {
+  color: #2B85EC;
+}
+#chooseRG {
+  float: right;
+}
+#chooseRG:hover {
+  color: #d22d2d;
 }
 /*- - - - - - - - - - - - - - - - - - -page- - - - - - - - - - - - - - - - - - - - - -*/
 div#pagecage {
@@ -760,4 +797,10 @@ div#stats {
   position: relative;
   font-size: 52px;
   top: 30%;
+}
+
+audio {
+  float:right;
+  display: block;
+  width:100%;
 }
