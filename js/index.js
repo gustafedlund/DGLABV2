@@ -536,8 +536,8 @@ function lookForNewUpgrade(i)
 
 //spawn coins
 
-var positionsY = [50, 150, 250, 350, 450];	//All possible x & y coordinates
-var positionsX = [0, 100, 200, 300];
+var positionsY = [0, 50, 100, 150, 200, 250, 450, 500, 550];	//All possible x & y coordinates
+var positionsX = [0, 50, 100, 150, 200, 250, 300, 350];
 
 var container = document.getElementById("landingArea");
 var counter = document.getElementById("counter");
@@ -561,7 +561,7 @@ function spawnCoin() {
 		clearTimeout(preventRemove);
 	} );
 
-	var preventRemove = setTimeout(removeCoin, 15000, coinDOM);
+	var preventRemove = setTimeout(removeCoin, 20000, coinDOM);
 	generatePosition(isToken);
 }
 
@@ -581,8 +581,8 @@ function generatePosition(isToken) {
 }
 
 function moveCoin(xPos, yPos) {
-	x = 200;	//Coin start coordinates
-	y = 350;
+	var x = 200;	//Coin start coordinates
+	var y = 350;
 
  	var moveAnimation = setInterval(frame, 1);	//Call the function frame every 20ms
  	function frame() {
@@ -598,19 +598,19 @@ function moveCoin(xPos, yPos) {
 					x = xPos;
 				} else {
 					if (xPos == 0) {
-							x = x - 2.5;
+							x = x - 4;
 						} else if (xPos == 50) {
-							x = x - 2;
+							x = x - 3;
 						} else if (xPos == 100) {
-							x = x - 1.5;
+							x = x - 2;
 						} else if (xPos == 150) {
 							x--;
 						} else if (xPos == 250) {
 							x++;
 						} else if (xPos == 300) {
-							x = x + 1.5;
-						} else if (xPos == 350) {
 							x = x + 2;
+						} else if (xPos == 350) {
+							x = x + 3;
 						}
 				}
 			/*if (x == xPos) {
@@ -643,27 +643,27 @@ function moveCoin(xPos, yPos) {
 				y = yPos;
 			} else {
 				if (yPos == 0) {
-	    			y = y - 4;
+	    			y = y - 7;
 		    	} else if (yPos == 50) {
-		    		y = y - 3.5;
+		    		y = y - 6;
 		    	} else if (yPos == 100) {
-		    		y = y - 3;
+		    		y = y - 5;
 		    	} else if (yPos == 150) {
-		    		y = y - 2.5;
+		    		y = y - 4;
 		    	} else if (yPos == 200) {
-		    		y = y - 2;
+		    		y = y - 3;
 					} else if (yPos == 250) {
-					 	y = y - 1.5;
+					 	y = y - 2;
 					} else if (yPos == 300) {
 						y--;
 					} else if (yPos == 400) {
 						y++;
 		    	} else if (yPos == 450) {
-		    		y = y + 1.5;
-		    	} else if (yPos == 500) {
 		    		y = y + 2;
+		    	} else if (yPos == 500) {
+		    		y = y + 3;
 		    	} else if (yPos == 550) {
-		    		y = y + 2.5;
+		    		y = y + 4;
 		    	}
 			}
 
@@ -671,7 +671,7 @@ function moveCoin(xPos, yPos) {
 			var coinDOM = document.getElementById(whatCoin);
 			coinDOM.style.top = y + 'px';
 			coinDOM.style.left = x + 'px';
-		}
+			}
   	}
 }
 
