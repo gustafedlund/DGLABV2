@@ -77,6 +77,7 @@ function farger() {
 		document.getElementById("palme").setAttribute("style", "border-color: #EC922B;");
 		document.getElementById("kungen").setAttribute("style", "border-color: #EC922B;");
 		document.getElementById("trade4token").setAttribute("style", "background-color: #EC922B;");
+		document.getElementById("buyToken").setAttribute("style", "color: #EC922B;");
 	} else {
 		body[0].style.backgroundColor = "#2dd2d2";
 		player.style.backgroundColor = "#d22d2d";
@@ -103,6 +104,7 @@ function farger() {
 		document.getElementById("palme").setAttribute("style", "border-color: #2dd2d2;");
 		document.getElementById("kungen").setAttribute("style", "border-color: #2dd2d2;");
 		document.getElementById("trade4token").setAttribute("style", "background-color: #2dd2d2;");
+		document.getElementById("buyToken").setAttribute("style", "color: #2dd2d2;");
 	}
 }
 //top-progressbar: illustrerar hur många röster spelaren & boten har
