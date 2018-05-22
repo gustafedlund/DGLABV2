@@ -257,7 +257,7 @@ var votes = 0;
 
 //Coin logic
 var coinAmount = 0;
-var coinValue = 5;
+var coinValue = 7;
 var recentCoinSpawn = false;
 var tokenAmount = 0;
 
@@ -906,6 +906,40 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 		},
 		info: '"Det politiska samtalsklimatet plågas av gnällighet, ängslighet och stingslighet. Nu behövs några vuxna i rummet."',
 	},
+	Jimmie =
+	{
+		name: "Jimmie Åkesson",
+		party: "SD",
+		quantity: 0,
+		cost: 6000,
+		vps: 450,
+		accumvps: 0,
+		lockedImage: "url('./img-misc/jimmie-locked.png')",
+		image: "url('./img-misc/jimmie.png')",
+		unlocked: false,
+		unlock: function() {
+			this.unlocked = true;
+			return;
+		},
+		load: function() {
+			if (votes >= this.cost) {
+				votes-=this.cost;
+				this.quantity++;
+				vps.vpsValue += this.vps;
+				this.cost = Math.ceil(this.cost*1.10)
+				this.accumvps += this.vps; //Accumulated votes per sec for this char
+				document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
+				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/jimmie-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
+			}
+		},
+		info: '"Sverigevänner..."',
+	},
 ];
 var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 [
@@ -1044,6 +1078,40 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 			}
 		},
 		info: '"Men, eh... det är bara käbbel!"',
+	},
+	Jimmy =
+	{
+		name: "Jimmy Åkesson",
+		party: "SD",
+		quantity: 0,
+		cost: 6000,
+		vps: 450,
+		accumvps: 0,
+		lockedImage: "url('./img-misc/jimmie-locked.png')",
+		image: "url('./img-misc/jimmie.png')",
+		unlocked: false,
+		unlock: function() {
+			this.unlocked = true;
+			return;
+		},
+		load: function() {
+			if (votes >= this.cost) {
+				votes-=this.cost;
+				this.quantity++;
+				vps.vpsValue += this.vps;
+				this.cost = Math.ceil(this.cost*1.10)
+				this.accumvps += this.vps; //Accumulated votes per sec for this char
+				document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
+				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
+				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/jimmie-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
+			}
+		},
+		info: '"Sverigevänner..."',
 	},
 ];
 
@@ -1268,7 +1336,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Stark Krona",
 		description: "Värdet på mynt dubbleras",
-		cost: 1500,
+		cost: 500,
 		valuta: "SEK",
 		//image:
 		unlocked: false,
@@ -1290,7 +1358,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Starkare Krona",
 		description: "Värdet på mynt dubbleras, igen!",
-		cost: 3000,
+		cost: 1500,
 		valuta: "SEK",
 		//image:
 		unlocked: false,
@@ -1312,7 +1380,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Krona på Steroider",
 		description: "Värdet på mynt dubbleras, ytterligare en gång!",
-		cost: 8500,
+		cost: 5000,
 		valuta: "SEK",
 		//image:
 		unlocked: false,
@@ -1334,7 +1402,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Inflation",
 		description: "Ökar chansen att få ett mynt.",
-		cost: 1500,
+		cost: 350,
 		valuta: "R",
 		//image:
 		unlocked: false,
@@ -1356,7 +1424,7 @@ var upgrades = //Array med spelets alla uppgraderingar (som objekt)
 	{
 		name: "Hyperinflation",
 		description: "Ökar chansen att få ett mynt.",
-		cost: 15000,
+		cost: 1000,
 		valuta: "R",
 		//image:
 		unlocked: false,
