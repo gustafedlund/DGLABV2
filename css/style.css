@@ -13,7 +13,6 @@ ALLIANSEN:
   padding: 0;
   font-family: 'VT323', monospace;
   box-sizing: border-box;
-  overflow: hidden;
 }
 /*landing page - choose party*/
 #cover {
@@ -43,6 +42,19 @@ div#progress {
   padding: 2.5px;
   position: relative;
   overflow: visible;
+  display: flex;
+}
+#playerLess {
+  position: fixed;
+  top: 2.5px;
+  left: 10px;
+  font-size: 24px;
+}
+#botLess {
+  position: fixed;
+  top: 2.5px;
+  right: 10px;
+  font-size: 24px;
 }
 div#player {
   height: 25px;
@@ -88,9 +100,24 @@ div#gameBoard {
   font-size: 2em;
 }
 #playerStatus {
-  width: 50%;
+  text-align: center;
+  position: relative;
+  width: 80%;
   padding: 10px;
-  height: 85px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+}
+h2#votes {
+  position: relative;
+ font-size: 65px;
+ top: 5%;
+ text-shadow: 2px 2px 5px black;
+}
+h2#vps {
+  font-size: 20px;
+  position: relative;
+  top: 10%;
 }
 div#landingArea {
   width: 100%;
@@ -162,10 +189,10 @@ div#landingArea {
 }
 div#rosta {
   width: 90%;
-  height: 215px;
-  min-height: 240px;
+  height: 26%;
+  min-height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
@@ -173,6 +200,8 @@ div#rosta {
 	transform: scale(0.8);
 	animation: boingDown 200ms linear 1;
   overflow: visible;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingDown {
 	0% {transform: scale(0.9)}
@@ -182,15 +211,18 @@ div#rosta {
 }
 div#rosta2 {
   width: 90%;
-  height: 215px;
+  height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 5%;
 	transform: scale(0.9);
 	animation: boingUp 200ms linear 1;
+  background-size: 100% 100%;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingUp {
 	0% {transform: scale(0.8)}
@@ -200,15 +232,18 @@ div#rosta2 {
 }
 div#rostaHover {
   width: 90%;
-  height: 215px;
+  height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 5%;
 	animation: boingHover 500ms ease-in-out 1;
 	transform: scale(0.9);
+  background-size: 100% 100%;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingHover {
 	0% {transform: scale(1)}
@@ -218,20 +253,22 @@ div#rostaHover {
 }
 div#rostaAv {
   width: 90%;
-  height: 220px;
+  height: 25%;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 5%;
-	animation: boingAv 500ms ease-in-out 1;
+	animation: boingAv 800ms ease-in-out 1;
 	transform: scale(1);
+  background-size: 100% 100%;
+  display: inline-block;
+  box-shadow: 2px 0.5px 10px black;
 }
 @keyframes boingAv {
 	0% {transform: scale(0.9)}
-	60% {transform: scale(0.95)}
-	80% {transform: scale(1.05)}
+	/*/60% {transform: scale(0.95)}
+	80% {transform: scale(0.98)}/*/
 	100% {transform: scale(1)}
 }
 
@@ -247,6 +284,41 @@ div#midSection {
   width: 40%;
   float: left;
   position: relative;
+}
+div#riksdag {
+  width: 95%;
+  padding: 10px;
+  height: 20%;
+  position: relative;
+  margin: 2.5%;
+}
+div#lineup {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+div#lineup:hover {
+  overflow-y: scroll;
+  outline: 1px #fff dashed;
+}
+p#dinRiksdag {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 20px;
+  color: #fff;
+  visibility: hidden;
+}
+div#riksdag:hover p {
+  visibility: visible;
+}
+.lineUpPps {
+  width: 10%;
+  height: 50px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  display: inline-block;
 }
 span#opener {
   width: 20px;
@@ -297,6 +369,7 @@ div#specs {
 }
 div#specs li {
   position: relative;
+  list-style-type: none;
 }
 span.explain {
   text-align: right;
@@ -305,15 +378,14 @@ span.explain {
   width: auto;
   height: 40px;
   background-color: #fff;
-  display: inline-block;
-  position: relative;
-  right: 52%;
-  overflow: visible;
+  position: absolute;
+  right: 103.5%;
   padding: 0px 20px;
   display: none;
+  white-space: nowrap;
 }
 div#specs li:first-child:hover #budgetExplain {
-  display: inline;
+  display: inline-block;
 }
 div#specs li:nth-child(2):hover #marketExplain {
   display: inline;
@@ -379,7 +451,7 @@ div#messageArea .closeMessage {
   overflow-y: scroll;
 }
 div#shop {
-  height: 800px;
+  height: 760px;
   width: 30%;
   float: left;
   position: relative;
@@ -533,7 +605,7 @@ div#legender {
 div.legend {
   width: 95%;
   margin: 2.5%;
-  height: 27%;
+  height: 25%;
   color: #fff;
   border-style: dashed;
   border-width: 5px;
@@ -576,9 +648,12 @@ div.legend:hover {
   float: right;
 }
 div#trade4token {
-  width: 100%;
+  width: 30%;
   height: 50px;
   padding: 0 10px;
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
 }
 #currentAmount {
   font-size: 42px;
@@ -589,6 +664,8 @@ div#trade4token {
   content: "L";
 }
 #buyToken {
+  width: 100px;
+  text-align: center;
   float: right;
   border: none;
   border-radius: 0;
@@ -648,9 +725,4 @@ div#stats {
   position: relative;
   font-size: 52px;
   top: 30%;
-}
-
-/*/Votes h2/*/
-h2#votes {
-
 }

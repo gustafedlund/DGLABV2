@@ -111,30 +111,32 @@ function farger() {
 function showProgress() {
 	//spelarens röster
 	document.getElementById("player").style.width = votes * (50/3500000) + "%";
-	document.getElementById("playervotes").innerText = votes.toFixed(0);
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (votes.toFixed(0).toString().length < 6) {
-			document.getElementById("playervotes").setAttribute("style", "position: fixed; top: 2.5px; left: 5px;");
+			document.getElementById("playerLess").innerText = votes.toFixed(0);
 				if (Alliansen == true) {
-					document.getElementById("playervotes").setAttribute("style", "color: #2B85EC;");
+					document.getElementById("playerLess").setAttribute("style", "color: #2B85EC;");
 				} else {
-					document.getElementById("playervotes").setAttribute("style", "color: #d22d2d;");
+					document.getElementById("playerLess").setAttribute("style", "color: #d22d2d;");
 				}
 		} else {
+			document.getElementById("playerLess").innerText = "";
+			document.getElementById("playervotes").innerText = votes.toFixed(0);
 			document.getElementById("playervotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-end;");
 		}
 	//boten annas röster
 	document.getElementById("computerSim").style.width = botVotes * (50/3500000) + "%";
-	document.getElementById("botvotes").innerText = botVotes.toFixed(0);
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (botVotes.toFixed(0).toString().length < 6) {
-			document.getElementById("botvotes").setAttribute("style", "position: fixed; top: 2.5px; right: 50px;");
+			document.getElementById("botLess").innerText = botVotes.toFixed(0);
 				if (Alliansen == true) {
-					document.getElementById("botvotes").setAttribute("style", "color: #d22d2d;");
+					document.getElementById("botLess").setAttribute("style", "color: #d22d2d;");
 				} else {
-					document.getElementById("botvotes").setAttribute("style", "color: #2B85EC;");
+					document.getElementById("botLess").setAttribute("style", "color: #2B85EC;");
 				}
 		} else {
+			document.getElementById("botLess").innerText = "";
+			document.getElementById("botvotes").innerText = botVotes.toFixed(0);
 			document.getElementById("botvotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-start;");
 		}
 }
@@ -363,8 +365,9 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 
 function refresh() //Värden, element och dylikt som behöver frekvent uppdatering
 {
-	playerVotes.innerHTML = votes.toFixed(0) + " R";
-	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
+	playerVotes.innerHTML = votes.toFixed(0);
+	counter.innerHTML = coinAmount.toFixed(1) + " SEK";
+	document.getElementById("vps").innerHTML = "per sekund: " + vps.votesPerSec.toFixed(0);
 	tokenConvert.tokenDOM.innerHTML = tokenAmount;
 
   vps.vpsCalc();
@@ -792,7 +795,12 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
         document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
-      }
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/ebba-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
+			}
     },
 		info: '"Skillnaden mellan att kapa och skapa vårdköer är ett (S)."',
   },
@@ -821,7 +829,12 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
         document.getElementById("cost " + this.name).innerHTML = "kostnad: " +  this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
         document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
-      }
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/jan-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
+			}
     },
 		info: '"Rysk gas har två nackdelar. Den ena är att den är gas, och den andra är att den är rysk."',
 	},
@@ -850,6 +863,11 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				document.getElementById("cost " + this.name).innerHTML = "kostnad: " +  this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
 				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/annie-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
 			}
 		},
 		info: '"Det finns tre saker som jag tycker riktigt illa om: 1) socialism 2) arrogans 3) män som inte förstår ett nej."',
@@ -879,6 +897,11 @@ var teamBlue = //Array med Alliansens karaktärer (som objekt)
 				document.getElementById("cost " + this.name).innerHTML = "kostnad: " +  this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
 				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/ulf-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
 			}
 		},
 		info: '"Det politiska samtalsklimatet plågas av gnällighet, ängslighet och stingslighet. Nu behövs några vuxna i rummet."',
@@ -911,7 +934,12 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         document.getElementById("cost " + this.name).innerHTML =  "kostnad: " +  this.cost + "R ";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
         document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
-      }
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/jonas-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
+			}
     },
 		info: '"När jag hör Jimmie Åkesson prata om miljöfrågan, börjar jag tänka på ett sånt här flaskskepp, hur kom du in hit egentligen?"',
   },
@@ -940,7 +968,12 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
         document.getElementById("cost " + this.name).innerHTML = "kostnad: " + this.cost + " R";
         document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
         document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
-      }
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/gustav-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
+			}
     },
 		info: '"Det här är en kolbit."',
 	},
@@ -969,6 +1002,11 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
 				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/isabella-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
 			}
 		},
 		info: '"Det finns inga jobb på en död planet."',
@@ -998,6 +1036,11 @@ var teamRed = //Array med Rödgrönas karaktärer (som objekt)
 				document.getElementById("cost " + this.name).innerHTML =  "kostnad: " + this.cost + " R";
 				document.getElementById("name " + this.name).innerHTML = this.quantity + " x " + this.name;
 				document.getElementById("vps " + this.name).innerHTML = "Varje " + this.name + " ger " + this.vps + " röster per sekund. Totalt " + this.accumvps + " röster per sekund.";
+				//visa att en är köpt i lineup i midsection
+				var pps = document.createElement("span");
+				pps.style.backgroundImage = "url('./img-misc/mini/stefan-s.png')"
+				pps.classList.add("lineUpPps");
+				document.getElementById("lineup").appendChild(pps);
 			}
 		},
 		info: '"Men, eh... det är bara käbbel!"',
