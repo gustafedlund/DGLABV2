@@ -169,7 +169,7 @@ div#rosta {
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
-  left: 0px;
+  left: 5%;
 	transform: scale(0.8);
 	animation: boingDown 200ms linear 1;
   overflow: visible;
@@ -188,7 +188,7 @@ div#rosta2 {
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
-  left: 0px;
+  left: 5%;
 	transform: scale(0.9);
 	animation: boingUp 200ms linear 1;
 }
@@ -206,7 +206,7 @@ div#rostaHover {
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
-  left: 0px;
+  left: 5%;
 	animation: boingHover 500ms ease-in-out 1;
 	transform: scale(0.9);
 }
@@ -224,7 +224,7 @@ div#rostaAv {
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
-  left: 0px;
+  left: 5%;
 	animation: boingAv 500ms ease-in-out 1;
 	transform: scale(1);
 }
