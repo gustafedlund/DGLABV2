@@ -111,30 +111,32 @@ function farger() {
 function showProgress() {
 	//spelarens röster
 	document.getElementById("player").style.width = votes * (50/3500000) + "%";
-	document.getElementById("playervotes").innerText = votes.toFixed(0);
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (votes.toFixed(0).toString().length < 6) {
-			document.getElementById("playervotes").setAttribute("style", "position: fixed; top: 2.5px; left: 5px;");
+			document.getElementById("playerLess").innerText = votes.toFixed(0);
 				if (Alliansen == true) {
-					document.getElementById("playervotes").setAttribute("style", "color: #2B85EC;");
+					document.getElementById("playerLess").setAttribute("style", "color: #2B85EC;");
 				} else {
-					document.getElementById("playervotes").setAttribute("style", "color: #d22d2d;");
+					document.getElementById("playerLess").setAttribute("style", "color: #d22d2d;");
 				}
 		} else {
+			document.getElementById("playerLess").innerText = "";
+			document.getElementById("playervotes").innerText = votes.toFixed(0);
 			document.getElementById("playervotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-end;");
 		}
 	//boten annas röster
 	document.getElementById("computerSim").style.width = botVotes * (50/3500000) + "%";
-	document.getElementById("botvotes").innerText = botVotes.toFixed(0);
 	//visa röster PÅ progressbar tills det finns plats att visa I bar
 		if (botVotes.toFixed(0).toString().length < 6) {
-			document.getElementById("botvotes").setAttribute("style", "position: fixed; top: 2.5px; right: 50px;");
+			document.getElementById("botLess").innerText = botVotes.toFixed(0);
 				if (Alliansen == true) {
-					document.getElementById("botvotes").setAttribute("style", "color: #d22d2d;");
+					document.getElementById("botLess").setAttribute("style", "color: #d22d2d;");
 				} else {
-					document.getElementById("botvotes").setAttribute("style", "color: #2B85EC;");
+					document.getElementById("botLess").setAttribute("style", "color: #2B85EC;");
 				}
 		} else {
+			document.getElementById("botLess").innerText = "";
+			document.getElementById("botvotes").innerText = botVotes.toFixed(0);
 			document.getElementById("botvotes").setAttribute("style", "color: #fff; position: static; display: flex; justify-content: flex-start;");
 		}
 }
