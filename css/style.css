@@ -26,81 +26,6 @@ ALLIANSEN:
   background-color: #cccccc;
   padding: 15% 20%;
 }
-#cover span.name {
-  width: 400px;
-  height: 200px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 700;
-  font-size: 50px;
-  position: relative;
-  display: inline-block;
-}
-span.name span.written {
-  position: absolute;
-  top: 80px;
-  left: 100px;
-}
-#rodgron:hover .bubble,
-#alliansen:hover .bubble {
-  opacity: 1;
-  transition: all 0.5s;
-}
-@keyframes move1 {
-  0% {top: 100px; left: 200px;}
-  25% {top: 30px; left: 60px;}
-  50% {top: 100px; left: 200px;}
-  75% {top: 170px; left: 340px;}
-  100% {top: 100px; left: 200px;}
-}
-@keyframes move2 {
-  0% {top: 100px; left: 200px;}
-  25% {top: 100px; left: 20px;}
-  50% {top: 100px; left: 200px;}
-  75% {top: 100px; left: 380px;}
-  100% {top: 100px; left: 200px;}
-}
-@keyframes move3 {
-  0% {top: 100px; left: 200px;}
-  25% {top: 170px; left: 60px;}
-  50% {top: 100px; left: 200px;}
-  75% {top: 30px; left: 340px;}
-  100% {top: 100px; left: 200px;}
-}
-@keyframes move4 {
-  0% {top: 100px; left: 200px;}
-  25% {top:190px; left:200px;}
-  50% {top: 100px; left: 200px;}
-  75% {top: 10px; left: 200px;}
-  100% {top: 100px; left: 200px;}
-}
-span.bubble {
-  width: 70px;
-  height: 70px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  opacity: 0;
-}
-.vp {background-image: url("../img-misc/vp.png");}
-.mp{background-image: url("../img-misc/mp.png");}
-.s{background-image: url("../img-misc/s.png");}
-.l {background-image: url("../img-misc/l.png");}
-.kd {background-image: url("../img-misc/kd.png");}
-.c {background-image: url("../img-misc/c.png");}
-.m {background-image: url("../img-misc/m.png");}
-.movt1 {animation: move1 2s ease-in-out infinite;}
-.movt1r {animation: move1 2s ease-in-out infinite reverse;}
-.movt2 {animation: move2 2s ease-in-out infinite;}
-.movt2r {animation: move2 2s ease-in-out infinite reverse;}
-.movt3 {animation: move3 2s ease-in-out infinite;}
-.movt3r {animation: move3 2s ease-in-out infinite reverse;}
-.movt4 {animation: move4 2s ease-in-out infinite;}
-.movt4r {animation: move4 2s ease-in-out infinite reverse;}
-
 /*- - - - - - - - - - - - - - - - - - -page- - - - - - - - - - - - - - - - - - - - - -*/
 div#pagecage {
   max-width: 1380px;
@@ -108,6 +33,8 @@ div#pagecage {
   max-height: 830px;
   min-height: 650px;
   position: relative;
+  margin-right: auto;
+  margin-left: auto;
 }
 div#progress {
   width: 100%;
@@ -243,15 +170,18 @@ div#landingArea {
 div#rosta {
   width: 100%;
   height: 240px;
+  min-height: 240px;
   background-image: url("../img-misc/klick-kuvert.png");
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   top: 40%;
   left: 0px;
 	transform: scale(0.8);
 	animation: boingDown 200ms linear 1;
+  overflow: visible;
 }
+
 @keyframes boingDown {
 	0% {transform: scale(0.9)}
 	80% {transform: scale(0.75)}
@@ -579,14 +509,20 @@ div#uppgr {
 div.upgradeFrame {
   width: 95%;
   margin: 2.5%;
-  height: 80px;
+  height: 100px;
   color: #fff;
+  border-style: solid;
+  border-width: 3px;
+  padding: 10px;
+}
+div.upgradeFrame:hover {
+  border-style: dashed;
 }
 div.upgradeFrame:last-child {
   margin-bottom: 100px;
 }
 h2.upgradeName {
-  font-size: 42px;
+  font-size: 37px;
   text-transform: uppercase;
 }
 p.createDesc, p.upgradeDescription {

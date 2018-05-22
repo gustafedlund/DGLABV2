@@ -524,6 +524,12 @@ function unlockUpgrade(i)
   createDesc.appendChild(descText);
   createCost.appendChild(costText);
   document.getElementById("uppgr").appendChild(createDiv);
+
+	if(Alliansen === true) {
+		createDiv.style.borderColor = "#EC922B";
+	} else {
+		createDiv.style.borderColor = "#2dd2d2";
+	}
 }
 function lookForNewUpgrade(i)
 {
@@ -532,6 +538,12 @@ function lookForNewUpgrade(i)
     unlockUpgrade(i);
     upgrades[i].unlock();
   }
+
+	if(Alliansen === true) {
+		createDiv.style.borderColor = "#EC922B";
+	} else {
+		createDiv.style.borderColor = "#2dd2d2";
+	}
 }
 
 //spawn coins
