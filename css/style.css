@@ -585,6 +585,9 @@ div#trade4token {
   float: left;
   color: #fff;
 }
+#currentAmount::after {
+  content: "L";
+}
 #buyToken {
   float: right;
   border: none;
@@ -593,6 +596,12 @@ div#trade4token {
   font-size: 25px;
   padding: 5px;
   margin: 5px;
+}
+#buyToken::after {
+  content: "KÖP FLER";
+}
+#buyToken:hover::after {
+  content: "2000SEK";
 }
 div#stats {
   margin-top: 5px;
