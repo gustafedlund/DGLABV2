@@ -369,7 +369,7 @@ function incrementPerSec() //Kollar antalet röster per sekund och genererar des
 function refresh() //Värden, element och dylikt som behöver frekvent uppdatering
 {
 	playerVotes.innerHTML = votes.toFixed(0);
-	counter.innerHTML = coinAmount.toFixed(0) + " SEK";
+	counter.innerHTML = coinAmount.toFixed(1) + " SEK";
 	document.getElementById("vps").innerHTML = "per sekund: " + vps.votesPerSec.toFixed(0);
 	tokenConvert.tokenDOM.innerHTML = tokenAmount;
 
@@ -378,7 +378,11 @@ function refresh() //Värden, element och dylikt som behöver frekvent uppdateri
 	refreshSpecs();
 	showProgress();
 	endGame.check();
+<<<<<<< HEAD
 	refreshStats();
+=======
+	statistics.playtime();
+>>>>>>> 84037617cf214aed3667f31a3172bc47e27de259
 }
 
 function claimVote() //Klicka på kakan för att få poäng
@@ -410,7 +414,7 @@ function gameloop()
     lookForNewUpgrade(j);
   }
 
-	statistics.getValues(); //Updates statistics
+	statistics.getValues(); //Update statistics
 }
 var loopInterval = setInterval(gameloop, 33);
 
@@ -751,24 +755,28 @@ function removeToken() {
 /*//Stats//*/
 
  statistics = { //Tracks a range of different stats
-	 totalVotes: 0, //done
-	 totalMoney: 0, //done
-	 totalClicks: 0, //done
-	 totalCoins: 0, //done
-	 totalLegendTokens: 0, //done
-	 votesPerClick: 0, //done
-	 votesPerSecond: 0, //done
-	 timePlayed: 0,
-	 charactersOwned: 0,
+	 totalVotes: 0,
+	 totalMoney: 0,
+	 totalClicks: 0,
+	 totalCoins: 0,
+	 totalLegendTokens: 0,
+	 votesPerClick: 0,
+	 votesPerSecond: 0,
 	 moneyValue: 0,
 	 votesPerSecondMultiplier: 0,
 	 getValues: function() {
 		 this.votesPerClick = click.votesPerClick;
 		 this.votesPerSecond = vps.votesPerSec;
-		 this.votesPerSecondMultiplier;
+		 this.votesPerSecondMultiplier = vps.vpsMultiplier;
+		 this.moneyValue = coinValue;
+	 },
+	 playtime: function()
+	 {
+		 var playtime = (new Date() - startTime)/1000;
 	 }
 };
 
+<<<<<<< HEAD
 function refreshStats() {
 	document.getElementById("timePlayed").innerText = " " + statistics.timePlayed;
 	document.getElementById("clicksClicked").innerText = statistics.totalClicks;
@@ -778,6 +786,8 @@ function refreshStats() {
 	document.getElementById("charactersOwned").innerText = statistics.charactersOwned;
 }
 
+=======
+>>>>>>> 84037617cf214aed3667f31a3172bc47e27de259
 /*/Objekt
 ----------------
 --------------/*/
