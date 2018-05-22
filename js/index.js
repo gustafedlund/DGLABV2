@@ -1595,5 +1595,5 @@ var tokenConvert =
 			coinAmount -= this.tokenCost;
 			tokenAmount++;
 		}
-	}
+	},
 }
