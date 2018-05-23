@@ -673,6 +673,11 @@ p.createCost, p.upgradeCostText {
 div#legender {
   display: none;
 }
+#legdiv {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 div.legend {
   width: 95%;
   margin: 2.5%;
@@ -705,7 +710,7 @@ div.legend:hover {
 }
 .legend p {
   width: 70%;
-  font-size: 15px;
+  font-size: 20px;
 }
 #palme p {
   text-align: right;
@@ -719,10 +724,10 @@ div.legend:hover {
   float: right;
 }
 div#trade4token {
-  width: 30%;
+  width: 100%;
   height: 50px;
   padding: 0 10px;
-  position: fixed;
+  position: absolute;
   right: 0px;
   bottom: 0px;
 }
