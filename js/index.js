@@ -12,9 +12,10 @@ var messageArea = document.getElementById("messageArea");
 var shopNav = document.getElementsByClassName("shopNav");
 var shopPage = document.getElementsByClassName("shopPage");
 
-var alliansPartier = ["l", "kd", "c", "m"];
-var rgPartier = ["vp", "mp", "mp", "s"];
-
+var gudrun = document.getElementById("gudrun");
+var palme = document.getElementById("palme");
+var kungen = document.getElementById("kungen");
+var legender = [gudrun, palme, kungen];
 
 /*var mainTheme = new Audio('bensound-ukulele.mp3');
 mainTheme.play();
@@ -53,60 +54,52 @@ document.getElementById("chooseA").addEventListener("click", valjAl);
 document.getElementById("chooseRG").addEventListener("click", valjRg);
 //funktion som sätter färg bereoende på lag
 function farger() {
+	var standardColor = [player, gameBoard, midSection, specs];
+	var invertColor = [body[0], opener, closer];
 	if(Alliansen == true) {
-		body[0].style.backgroundColor = "#EC922B";
-		player.style.backgroundColor = "#2B85EC";
-		computerSim.style.backgroundColor = "#d22d2d";
-		gameBoard.style.backgroundColor = "#2B85EC";
-		gameBoard.style.borderRight = "5px solid #EC922B";
-		midSection.style.backgroundColor = "#2B85EC";
-		midSection.style.borderRight = "5px solid #EC922B";
-		specs.style.backgroundColor = "#2B85EC";
-		specs.style.color = "#EC922B";
-		opener.style.backgroundColor = "#EC922B";
-		opener.style.color = "#2B85EC";
-		closer.style.backgroundColor = "#EC922B";
-		closer.style.color = "#2B85EC";
-		shopNav[0].style.backgroundColor = "#2B85EC";
-		shopNav[0].style.color = "#EC922B";
-		for (var i = 1; i < shopNav.length; i++) {
-			shopNav[i].style.color = "#EC922B";
+		for (var i = 0; i < standardColor.length; i++) {
+			standardColor[i].classList.add("allStandard");
+				if (standardColor[i] == gameBoard || standardColor[i] == midSection) {
+					standardColor[i].style.borderRight = "5px solid #EC922B";
+				}
 		}
-		for (var j = 0; j < shopPage.length; j++) {
-			shopPage[j].style.backgroundColor = "#2B85EC";
+		for (var j = 0; j < invertColor.length; j++) {
+			invertColor[j].classList.add("allInvert");
 		}
-		document.getElementById("gudrun").setAttribute("style", "border-color: #EC922B;");
-		document.getElementById("palme").setAttribute("style", "border-color: #EC922B;");
-		document.getElementById("kungen").setAttribute("style", "border-color: #EC922B;");
+		for (var k = 1; k < shopNav.length; k++) {
+			shopNav[k].style.color = "#EC922B";
+		}
+		for (var l = 0; l < shopPage.length; l++) {
+			shopPage[l].style.backgroundColor = "#2B85EC";
+		}
+		shopNav[0].style = "color: #EC922B; background-color: #2B85EC;";
 		document.getElementById("trade4token").setAttribute("style", "background-color: #EC922B;");
 		document.getElementById("buyToken").setAttribute("style", "color: #EC922B;");
+		for (var m = 0; m < legender.length; m++) {
+			legender[m].setAttribute("style", "border-color: #EC922B;");
+		}
 	} else {
-		body[0].style.backgroundColor = "#2dd2d2";
-		player.style.backgroundColor = "#d22d2d";
-		computerSim.style.backgroundColor = "#2B85EC";
-		gameBoard.style.backgroundColor = "#d22d2d";
-		gameBoard.style.borderRight = "5px solid #2dd2d2";
-		midSection.style.backgroundColor = "#d22d2d";
-		midSection.style.borderRight = "5px solid #2dd2d2";
-		specs.style.backgroundColor = "#2dd2d2";
-		specs.style.color = "#d22d2d";
-		opener.style.backgroundColor = "#2dd2d2";
-		opener.style.color = "#d22d2d";
-		closer.style.backgroundColor = "#2dd2d2";
-		closer.style.color = "#d22d2d";
-		shopNav[0].style.backgroundColor = "#d22d2d";
-		shopNav[0].style.color = "#2dd2d2";
+		for (var i = 0; i < standardColor.length; i++) {
+			standardColor[i].classList.add("rgStandard");
+				if (standardColor[i] == gameBoard || standardColor[i] == midSection) {
+					standardColor[i].style.borderRight = "5px solid #2dd2d2";
+				}
+		}
+		for (var j = 0; j < invertColor.length; j++) {
+			invertColor[j].classList.add("rgInvert");
+		}
 		for (var k = 1; k < shopNav.length; k++) {
 			shopNav[k].style.color = "#2dd2d2";
 		}
 		for (var l = 0; l < shopPage.length; l++) {
 			shopPage[l].style.backgroundColor = "#d22d2d";
 		}
-		document.getElementById("gudrun").setAttribute("style", "border-color: #2dd2d2;");
-		document.getElementById("palme").setAttribute("style", "border-color: #2dd2d2;");
-		document.getElementById("kungen").setAttribute("style", "border-color: #2dd2d2;");
+		shopNav[0].style = "color: #2dd2d2; background-color: #d22d2d;";
 		document.getElementById("trade4token").setAttribute("style", "background-color: #2dd2d2;");
 		document.getElementById("buyToken").setAttribute("style", "color: #2dd2d2;");
+		for (var m = 0; m < legender.length; m++) {
+			legender[m].setAttribute("style", "border-color: #2dd2d2;");
+		}
 	}
 }
 //top-progressbar: illustrerar hur många röster spelaren & boten har
@@ -205,7 +198,7 @@ function visaSida(sida) {
 		//change color of inactive buttons
 		for (var i = 0; i < shopNav.length; i++) {
 			shopNav[i].style.backgroundColor = "#fff";
-			shopNav[i].style.color = "#2B85EC";
+			shopNav[i].style.color = "#EC922B";
 		}
 		currentPage[0].style.backgroundColor = "#2b85ec";
 		currentPage[0].style.color = "#EC922B";
